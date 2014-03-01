@@ -5,7 +5,8 @@
     central widget
 */
 
-LedCube::LedCube()
+LedCube::LedCube(QWidget *parent)
+    : QMainWindow(parent)
 {
     dummyWidget = new QLabel("Hello, world!");
     setCentralWidget(dummyWidget);

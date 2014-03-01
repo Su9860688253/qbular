@@ -8,7 +8,7 @@ class QLabel;
 class LedCube : public QMainWindow
 {
 public:
-    LedCube();
+    LedCube(QWidget *parent = 0);
 
 private:
     QLabel *dummyWidget;        
