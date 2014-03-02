@@ -8,6 +8,8 @@
 LedCube::LedCube(QWidget *parent)
     : QMainWindow(parent)
 {
-    dummyWidget = new QLabel("Hello, world!");
-    setCentralWidget(dummyWidget);
+    centralWidget = new QWidget(this);
+    setCentralWidget(centralWidget);
+
+    dummyWidget = new QLabel("Hello, world!", centralWidget);
 }

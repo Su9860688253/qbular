@@ -11,6 +11,7 @@ public:
     LedCube(QWidget *parent = 0);
 
 private:
+    QWidget *centralWidget;
     QLabel *dummyWidget;        
 };
 
