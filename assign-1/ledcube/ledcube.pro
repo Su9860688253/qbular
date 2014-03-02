@@ -8,6 +8,8 @@ DEPENDPATH += .
 INCLUDEPATH += .
 
 SOURCES +=  main.cpp\
-            mainwindow.cpp
-HEADERS +=  mainwindow.h
+            mainwindow.cpp\
+            ledcube.cpp
+HEADERS +=  mainwindow.h\
+            ledcube.h
  

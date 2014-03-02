@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 class QLabel;
+class LedCube;
 
 class MainWindow : public QMainWindow
 {
@@ -11,8 +12,7 @@ public:
     MainWindow(QWidget *parent = 0);
 
 private:
-    QWidget *centralWidget;
-    QLabel *dummyWidget;        
+    LedCube *ledCube;
 };
 
 #endif 
