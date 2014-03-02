@@ -13,4 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ledCube = new LedCube();
     setCentralWidget(ledCube);
+
+    QIcon *icon_ptr = new QIcon(":/images/icon.png");
+    const QIcon &icon_ref = *icon_ptr;
+    setWindowIcon(icon_ref);
 }
