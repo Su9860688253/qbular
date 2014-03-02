@@ -12,4 +12,4 @@ SOURCES +=  main.cpp\
             ledcube.cpp
 HEADERS +=  mainwindow.h\
             ledcube.h
- 
+RESOURCES += ledcube.qrc 
