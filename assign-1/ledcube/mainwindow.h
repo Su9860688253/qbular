@@ -1,14 +1,14 @@
-#ifndef LEDCUBE_H
-#define LEDCUBE_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 #include <QMainWindow>
 
 class QLabel;
 
-class LedCube : public QMainWindow
+class MainWindow : public QMainWindow
 {
 public:
-    LedCube(QWidget *parent = 0);
+    MainWindow(QWidget *parent = 0);
 
 private:
     QWidget *centralWidget;

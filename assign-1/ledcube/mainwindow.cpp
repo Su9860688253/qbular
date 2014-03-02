@@ -1,11 +1,11 @@
 #include <QtGui>
-#include "ledcube.h"
+#include "mainwindow.h"
 /*
     For now, all this does is add a label and sets it as the
     central widget
 */
 
-LedCube::LedCube(QWidget *parent)
+MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     centralWidget = new QWidget(this);
