@@ -21,4 +21,4 @@ Outline
 [5]: http://en.wikipedia.org/wiki/Qt_%28software%29
 [6]: http://www.opengl.org/
 [7]: http://en.wikipedia.org/wiki/Microsoft_Kinect
-[8]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/845d7e8c27648f30fb64fefc3ef2ec3d34aefd14/assign-1/ledcube/?at=default
+[8]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-1/ledcube/ 
