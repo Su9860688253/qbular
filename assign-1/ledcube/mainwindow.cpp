@@ -7,7 +7,6 @@
     Creates an instance of the LedCube class, sets it as the
     central widget, and sets a window icon.
 */
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {

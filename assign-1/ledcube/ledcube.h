@@ -11,7 +11,6 @@ class QGroupBox;
     A widget that consists of a simulation placeholder and four
     QBoxWidgets that contain dummy controls of the simulation.
 */
-
 class LedCube : public QWidget
 {
 public:
@@ -19,13 +18,5 @@ public:
 
 private:
     Ui::LedCube ui;
-/*
-    QLabel *simPlaceholder;
-    QGroupBox *transformControls;
-    QGroupBox *resControls;
-    QGroupBox *spacingControls;
-    QGroupBox *colorControls;
-*/
 };
-
 #endif

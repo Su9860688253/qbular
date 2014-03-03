@@ -14,5 +14,4 @@ public:
 private:
     LedCube *ledCube;
 };
-
 #endif 
