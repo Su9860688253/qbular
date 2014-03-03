@@ -5,3 +5,4 @@ syntax: glob
 Makefile
 assign-1/ledcube/ledcube
 qrc_*
+ui_*

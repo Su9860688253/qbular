@@ -1,10 +1,11 @@
 #include <QtGui>
 #include "ledcube.h"
+#include "ui_ledcube.h"
 
 LedCube::LedCube(QWidget *parent)
     : QWidget(parent)
 {
-
+/*
     QVBoxLayout *mainLayout = new QVBoxLayout();
     setLayout(mainLayout);
 
@@ -13,4 +14,7 @@ LedCube::LedCube(QWidget *parent)
     const QPixmap &image_ref = *image_ptr;
     simPlaceholder->setPixmap(image_ref);
     mainLayout->addWidget(simPlaceholder);
+*/
+
+    ui.setupUi(this);
 }

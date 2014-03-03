@@ -4,8 +4,8 @@
 
 //#include "ledcube.h"
 /*
-    For now, all this does is add a label and sets it as the
-    central widget
+    Creates an instance of the LedCube class, sets it as the
+    central widget, and sets a window icon.
 */
 
 MainWindow::MainWindow(QWidget *parent)
@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     ledCube = new LedCube();
     setCentralWidget(ledCube);
 
+    //set window icon
     QIcon *icon_ptr = new QIcon(":/images/icon.png");
     const QIcon &icon_ref = *icon_ptr;
     setWindowIcon(icon_ref);
