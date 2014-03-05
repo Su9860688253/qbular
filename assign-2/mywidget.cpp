@@ -1,12 +1,16 @@
 #include <QtGui>
 #include "mywidget.h"
+#include "mainwidget.h"
 
 MyWidget::MyWidget(QWidget *parent)
     : QWidget(parent)
 {
-    QLabel *aLabel = new QLabel("bla bla bla", this);
-
     QVBoxLayout *layoutMain = new QVBoxLayout();
-    layoutMain->addWidget(aLabel);
     setLayout(layoutMain);
+
+    QLabel *aLabel = new QLabel("bla bla bla", this);
+    layoutMain->addWidget(aLabel);
+
+    MainWidget *mainWidget = new MainWidget();
+    layoutMain->addWidget(mainWidget);
 }

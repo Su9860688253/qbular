@@ -9,7 +9,9 @@ main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     MyWidget *myWidget = new MyWidget();
-    myWidget->setFixedSize(myWidget->sizeHint());
+    //myWidget->setFixedSize(myWidget->sizeHint());
+    QSize sizeMyWidget(500, 500);
+    myWidget->setFixedSize(sizeMyWidget);
     myWidget->setVisible(true);
 
     return app.exec();
