@@ -18,9 +18,9 @@ public:
     MyWidget(QWidget *parent = 0);
 
 private:
-    QHBoxLayout *mainLayout;
-    QVBoxLayout *leftLayout;
-    QHBoxLayout *rightLayout;
+    QHBoxLayout *mainHLayout;
+    QVBoxLayout *leftVLayout;
+    QHBoxLayout *rightHLayout;
 
     QGroupBox *transformGroupBox;
     QGroupBox *countGroupBox;

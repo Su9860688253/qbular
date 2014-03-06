@@ -34,23 +34,23 @@ spacingGroupBox->setMaximumSize(groupBoxSize);
 colorGroupBox->setMaximumSize(groupBoxSize);
 
 //adds group boxes to left layout
-leftLayout = new QVBoxLayout();
-leftLayout->addWidget(transformGroupBox);
-leftLayout->addWidget(countGroupBox);
-leftLayout->addWidget(spacingGroupBox);
-leftLayout->addWidget(colorGroupBox);
-leftLayout->addStretch();
+leftVLayout = new QVBoxLayout();
+leftVLayout->addWidget(transformGroupBox);
+leftVLayout->addWidget(countGroupBox);
+leftVLayout->addWidget(spacingGroupBox);
+leftVLayout->addWidget(colorGroupBox);
+leftVLayout->addStretch();
 
 //creates simulation and adds it the right layout
 QSize simulationSize(500, 500);
 mainWidget = new MainWidget();
 mainWidget->setMinimumSize(simulationSize);
-rightLayout = new QHBoxLayout();
-rightLayout->addWidget(mainWidget);
+rightHLayout = new QHBoxLayout();
+rightHLayout->addWidget(mainWidget);
 
 //adds controls and simulation to main layout
-mainLayout = new QHBoxLayout();
-mainLayout->addLayout(leftLayout);
-mainLayout->addLayout(rightLayout);
-setLayout(mainLayout);
+mainHLayout = new QHBoxLayout();
+mainHLayout->addLayout(leftVLayout);
+mainHLayout->addLayout(rightHLayout);
+setLayout(mainHLayout);
 }
