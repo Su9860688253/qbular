@@ -8,10 +8,12 @@ main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
+    QApplication::setStyle("motif");
+
     MyWidget *myWidget = new MyWidget();
     //myWidget->setFixedSize(myWidget->sizeHint());
-    QSize sizeMyWidget(500, 500);
-    myWidget->setFixedSize(sizeMyWidget);
+    //QSize sizeMyWidget(500, 500);
+    //myWidget->setFixedSize(sizeMyWidget);
     myWidget->setVisible(true);
 
     return app.exec();
