@@ -5,25 +5,6 @@
 MyWidget::MyWidget(QWidget *parent)
     : QWidget(parent)
 {
-/*
-    //creates group boxes
-    transformGroupBox = new QGroupBox("Transform");
-    countGroupBox = new QGroupBox("LED Count");
-    spacingGroupBox = new QGroupBox("LED Spacing");
-    colorGroupBox = new QGroupBox("LED Color");
-
-    //sets min and max size of group boxes
-    QSize groupBoxSize(250, 125);
-    transformGroupBox->setMinimumSize(groupBoxSize);
-    countGroupBox->setMinimumSize(groupBoxSize);
-    spacingGroupBox->setMinimumSize(groupBoxSize);
-    colorGroupBox->setMinimumSize(groupBoxSize);
-
-    transformGroupBox->setMaximumSize(groupBoxSize);
-    countGroupBox->setMaximumSize(groupBoxSize);
-    spacingGroupBox->setMaximumSize(groupBoxSize);
-    colorGroupBox->setMaximumSize(groupBoxSize);
-*/
     //adds group boxes to left layout
     QVBoxLayout *left = new QVBoxLayout();
     left->addWidget(this->createTransformControls());
