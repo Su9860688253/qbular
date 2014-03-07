@@ -20,6 +20,7 @@ SOURCES     += \
     simulation/mainwidget.cpp \
     simulation/geometryengine.cpp
 RESOURCES += \
+    ledcube.qrc \
     simulation/shaders.qrc \
     simulation/textures.qrc
 OTHER_FILES += \
