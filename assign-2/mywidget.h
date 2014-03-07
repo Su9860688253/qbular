@@ -25,18 +25,6 @@ public:
     MyWidget(QWidget *parent = 0);
 
 private:
-/*
-    QHBoxLayout *mainHLayout;
-    QVBoxLayout *leftVLayout;
-    QHBoxLayout *rightHLayout;
-
-    QGroupBox *transformGroupBox;
-    QGroupBox *countGroupBox;
-    QGroupBox *spacingGroupBox;
-    QGroupBox *colorGroupBox;
-
-    MainWidget *mainWidget;
-*/
     //transform controls
     QSpinBox *zoom;
     QSpinBox *xRot;
