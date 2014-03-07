@@ -8,7 +8,8 @@ main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    QApplication::setStyle("motif");
+    //QApplication::setStyle("motif");
+    QApplication::setStyle("clearlooks");
 
     MyWidget *myWidget = new MyWidget();
     //myWidget->setFixedSize(myWidget->sizeHint());
