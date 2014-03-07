@@ -103,12 +103,53 @@ MyWidget::createTransformControls()
 QGroupBox *
 MyWidget::createCountControls()
 {
+    const int numOfSpinBoxes = 3, numOfProperties = 4;
+    QGridLayout *grid = new QGridLayout();
+    QLabel *label;
+    QSpinBox *spinBoxes[numOfSpinBoxes];
+
+    //Stores the text for each label. Each row represents a
+    //different label.
+    QString labelText[numOfSpinBoxes] = {
+        "Length:",
+        "Width:",
+        "Height:"};
+
+    //Stores the values of the spinbox properties. Column 0
+    //is the default value, column 1 is the min value,
+    //column 2 is the max value, and column 3 is the single
+    //step amount.
+    double spinBoxValues[numOfProperties] = {
+        8,     3,      100,    1};
+
+    //for each spin box
+    int i;
+    for (i = 0; i < numOfSpinBoxes; i++)
+    {
+        //create label
+        label = new QLabel(labelText[i]);
+        grid->addWidget(label, i, 0);
+
+        //create spin box
+        spinBoxes[i] = new QSpinBox();
+        spinBoxes[i]->setValue(spinBoxValues[0]);
+        spinBoxes[i]->setMinimum(spinBoxValues[1]);
+        spinBoxes[i]->setMaximum(spinBoxValues[2]);
+        spinBoxes[i]->setSingleStep(spinBoxValues[3]);
+        grid->addWidget(spinBoxes[i], i, 1);
+    }
+
+    //stores spin boxes as member variables
+    this->length = spinBoxes[0];
+    this->width= spinBoxes[1];
+    this->height = spinBoxes[2];
+
     QGroupBox *groupBox = new QGroupBox("LED Count");
-    QSize size(400, 125);
-    groupBox->setMinimumSize(size);
+    groupBox->setLayout(grid);
+    groupBox->setFixedWidth(400);
 
     return groupBox;
-}
+}//method createCountControls()
 
 QGroupBox *
 MyWidget::createSpacingControls()
