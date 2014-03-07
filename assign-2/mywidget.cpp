@@ -28,17 +28,71 @@ MyWidget::MyWidget(QWidget *parent)
 
     //set the signal/slot connections
     this->setConnections();
-}
+}//constructor
 
 QGroupBox *
 MyWidget::createTransformControls()
 {
+    //Stores the text for each label. Each row represents a
+    //different label.
+    const int numOfSpinBoxes = 4, numOfProperties = 3;
+    QString labelText[numOfSpinBoxes] = {
+        "Zoom:",
+        "X Rotation:",
+        "Y Rotation:",
+        "Z Rotation:"};
+
+    //Stores the values of the spinbox properties. Each row
+    //representes a different spinbox. The column 0 is the
+    //default value, column 1 is the min value, and column
+    //2 is the max value.
+    int spinBoxValues[numOfSpinBoxes][numOfProperties] = {
+        {100,   30,     400},
+        {0,     -360,   360}, 
+        {0,     -360,   360}, 
+        {0,     -360,   360} };
+
+    QGridLayout *grid = new QGridLayout();
+    QLabel *label;
+    QSlider *slider;
+    QSpinBox *spinBox;
+
+    //for each spin box
+    int i;
+    for (i = 0; i < numOfSpinBoxes; i++)
+    {
+        //create label
+        label = new QLabel(labelText[i]);
+        grid->addWidget(label, i, 0);
+
+        //create slider
+        slider = new QSlider(Qt::Horizontal);
+        slider->setMinimum(spinBoxValues[i][0]);
+        slider->setMinimum(spinBoxValues[i][1]);
+        slider->setMaximum(spinBoxValues[i][2]);
+        grid->addWidget(slider, i, 1);
+
+        //create spin box
+        spinBox = new QSpinBox();
+        spinBox->setMinimum(spinBoxValues[i][0]);
+        spinBox->setMinimum(spinBoxValues[i][1]);
+        spinBox->setMaximum(spinBoxValues[i][2]);
+        grid->addWidget(spinBox, i, 2);
+
+        //set signal/slot connections
+        QObject::connect(slider, SIGNAL(valueChanged(int)),
+                spinBox, SLOT(setValue(int)));
+        QObject::connect(spinBox, SIGNAL(valueChanged(int)),
+                slider, SLOT(setValue(int)));
+    }
+
     QGroupBox *groupBox = new QGroupBox("Transform");
-    QSize size(400, 125);
-    groupBox->setMinimumSize(size);
+//    groupBox->setFixedSize(400, 125);
+    groupBox->setLayout(grid);
+    groupBox->setFixedWidth(400);
 
     return groupBox;
-}
+}//method createTransformControls()
 
 QGroupBox *
 MyWidget::createCountControls()
