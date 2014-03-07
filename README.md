@@ -13,6 +13,7 @@ This repo contains my assignments from the class [Software Design Lab][1] (CSC-2
 Outline
 ----
 * Assignment 1 - [Demo UI for the LED Cube Simulator Project][8]
+* Assignment 2 - [Same demo UI as before but with a stock cube simulation][9]
 
 [1]: http://www-cs.ccny.cuny.edu/~wolberg/cs221/index.html
 [2]: http://www.ccny.cuny.edu/
@@ -22,3 +23,4 @@ Outline
 [6]: http://www.opengl.org/
 [7]: http://en.wikipedia.org/wiki/Microsoft_Kinect
 [8]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-1/ledcube/ 
+[9]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-2/
