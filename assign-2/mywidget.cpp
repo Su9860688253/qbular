@@ -55,7 +55,7 @@ MyWidget::createTransformControls()
     QGridLayout *grid = new QGridLayout();
     QLabel *label;
     QSlider *slider;
-    QSpinBox *spinBox;
+    QSpinBox *spinBoxes[4];
 
     //for each spin box
     int i;
@@ -73,21 +73,26 @@ MyWidget::createTransformControls()
         grid->addWidget(slider, i, 1);
 
         //create spin box
-        spinBox = new QSpinBox();
-        spinBox->setMinimum(spinBoxValues[i][0]);
-        spinBox->setMinimum(spinBoxValues[i][1]);
-        spinBox->setMaximum(spinBoxValues[i][2]);
-        grid->addWidget(spinBox, i, 2);
+        spinBoxes[i] = new QSpinBox();
+        spinBoxes[i]->setMinimum(spinBoxValues[i][0]);
+        spinBoxes[i]->setMinimum(spinBoxValues[i][1]);
+        spinBoxes[i]->setMaximum(spinBoxValues[i][2]);
+        grid->addWidget(spinBoxes[i], i, 2);
 
         //set signal/slot connections
         QObject::connect(slider, SIGNAL(valueChanged(int)),
-                spinBox, SLOT(setValue(int)));
-        QObject::connect(spinBox, SIGNAL(valueChanged(int)),
+                spinBoxes[i], SLOT(setValue(int)));
+        QObject::connect(spinBoxes[i], SIGNAL(valueChanged(int)),
                 slider, SLOT(setValue(int)));
     }
 
+    //stores spin boxes as member variables
+    this->zoom = spinBoxes[0];
+    this->xRot = spinBoxes[1];
+    this->yRot = spinBoxes[2];
+    this->zRot = spinBoxes[3];
+
     QGroupBox *groupBox = new QGroupBox("Transform");
-//    groupBox->setFixedSize(400, 125);
     groupBox->setLayout(grid);
     groupBox->setFixedWidth(400);
 
