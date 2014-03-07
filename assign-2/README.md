@@ -22,7 +22,7 @@ and uses the [Qt framework][6].
 Installation
 ----
     hg clone https://bitbucket.org/ian_s_mcb/software-design-spring2014
-    cd software-design-spring2014/assign-2/ledcube
+    cd software-design-spring2014/assign-2
     qmake
     make
     ./ledcube
