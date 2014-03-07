@@ -55,7 +55,7 @@ MyWidget::createTransformControls()
     QGridLayout *grid = new QGridLayout();
     QLabel *label;
     QSlider *slider;
-    QSpinBox *spinBoxes[4];
+    QSpinBox *spinBoxes[numOfSpinBoxes];
 
     //for each spin box
     int i;
