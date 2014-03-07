@@ -154,22 +154,79 @@ MyWidget::createCountControls()
 QGroupBox *
 MyWidget::createSpacingControls()
 {
+    const int numOfProperties = 4;
+
+    //Stores the values of the spinbox properties. Column 0
+    //is the default value, column 1 is the min value,
+    //column 2 is the max value, and column 3 is the single
+    //step amount.
+    double spinBoxValues[numOfProperties] = {
+        0.5,     0.25,      6.0,    0.5};
+
+    QGridLayout *grid = new QGridLayout();
+
+    //create label
+    QLabel *label = new QLabel("Distance:");
+    grid->addWidget(label, 0, 0);
+
+    //create spin box
+    QDoubleSpinBox *spinBox = new QDoubleSpinBox();
+    spinBox->setValue(spinBoxValues[0]);
+    spinBox->setMinimum(spinBoxValues[1]);
+    spinBox->setMaximum(spinBoxValues[2]);
+    spinBox->setSingleStep(spinBoxValues[3]);
+    grid->addWidget(spinBox, 0, 1);
+
+    //stores spin boxes as member variables
+    this->distance = spinBox;
+
     QGroupBox *groupBox = new QGroupBox("LED Spacing");
-    QSize size(400, 125);
-    groupBox->setMinimumSize(size);
+    groupBox->setLayout(grid);
+    groupBox->setFixedWidth(400);
 
     return groupBox;
-}
+}//method createSpacingControls()
 
 QGroupBox *
 MyWidget::createColorControls()
 {
+    const int numOfButtons = 4;
+
+    //Stores the text for each label. Each row represents a
+    //different label.
+    QString buttonText[numOfButtons] = {
+        "Red:",
+        "Blue:",
+        "Green:",
+        "White:"};
+
+    QGridLayout *grid = new QGridLayout();
+    QButtonGroup *group = new QButtonGroup();
+    QRadioButton *button;
+
+    //for each button
+    int i;
+    for (i = 0; i < numOfButtons; i++)
+    {
+        //create label
+        button = new QRadioButton(buttonText[i]);
+        group->addButton(button);
+        grid->addWidget(button, (i % 2), (i > 1));
+
+        //mark the first button as checked
+        if (i == 0)
+            button->setChecked(true);
+    }
+
+    //stores button group as a member variable
+    this->color = group;
+
     QGroupBox *groupBox = new QGroupBox("LED Color");
-    QSize size(400, 125);
-    groupBox->setMinimumSize(size);
+    groupBox->setLayout(grid);
+    groupBox->setFixedWidth(400);
 
     return groupBox;
-}
+}//method createColorControls()
 
 void
 MyWidget::setConnections()

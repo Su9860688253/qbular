@@ -15,6 +15,7 @@ class MainWidget;
 */
 
 class QSpinBox;
+class QDoubleSpinBox;
 class QButtonGroup;
 class MainWidget;
 class QGroupBox;
@@ -37,7 +38,7 @@ private:
     QSpinBox *height;
 
     //distance controls
-    QSpinBox *distance;
+    QDoubleSpinBox *distance;
 
     //color controls
     QButtonGroup *color;
