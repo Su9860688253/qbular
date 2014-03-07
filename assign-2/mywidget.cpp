@@ -33,9 +33,10 @@ MyWidget::MyWidget(QWidget *parent)
 QGroupBox *
 MyWidget::createTransformControls()
 {
+    const int numOfSpinBoxes = 4, numOfProperties = 3;
+
     //Stores the text for each label. Each row represents a
     //different label.
-    const int numOfSpinBoxes = 4, numOfProperties = 3;
     QString labelText[numOfSpinBoxes] = {
         "Zoom:",
         "X Rotation:",
