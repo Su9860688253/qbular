@@ -268,8 +268,15 @@ CentralWidget::setConnections()
     connect(this->zoom, SIGNAL(valueChanged(int)),
         this->simulationWidget, SLOT(setZoom(int)));
 
+    //connect count spinboxes to simulationWidget
+    connect(this->length, SIGNAL(valueChanged(int)),
+        this->simulationWidget, SLOT(setLength(int)));
+    connect(this->width, SIGNAL(valueChanged(int)),
+        this->simulationWidget, SLOT(setWidth(int)));
+    connect(this->height, SIGNAL(valueChanged(int)),
+        this->simulationWidget, SLOT(setHeight(int)));
+
     //connect color buttons to simulationWidget
     connect(this->color, SIGNAL(buttonClicked(QAbstractButton *)),
         this->simulationWidget, SLOT(setColor(QAbstractButton *)));
-
 }//end setConnections

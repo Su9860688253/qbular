@@ -29,6 +29,11 @@ private:
     int zRot;
 
     int zoom;
+
+    int length;
+    int width;
+    int height;
+
     QString color;
 
     QPoint lastPos;
@@ -40,8 +45,11 @@ public slots:
 
     void setZoom(int zoom);
 
-    void setColor(QAbstractButton *);
+    void setLength(int l);
+    void setWidth(int w);
+    void setHeight(int h);
 
+    void setColor(QAbstractButton *);
 signals:
     void xRotChanged(int angle);
     void yRotChanged(int angle);

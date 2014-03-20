@@ -10,6 +10,9 @@ SimulationWidget::SimulationWidget(QWidget *parent)
         yRot(0),
         zRot(0),
         zoom(100),
+        length(1),
+        width(1),
+        height(1),
         color("green")
 {}//end constructor
 
@@ -211,6 +214,39 @@ SimulationWidget::setZoom(int zoom)
         updateGL();
     }
 }//end setZoom
+
+
+void
+SimulationWidget::setLength(int l)
+{
+    if (l != this->length)
+    {
+        this->length = l;
+        updateGL();
+    }
+}//end set
+
+
+void
+SimulationWidget::setWidth(int w)
+{
+    if (w != this->width)
+    {
+        this->width = w;
+        updateGL();
+    }
+}//end set
+
+
+void
+SimulationWidget::setHeight(int h)
+{
+    if (h != this->height)
+    {
+        this->height = h;
+        updateGL();
+    }
+}//end set
 
 
 void
