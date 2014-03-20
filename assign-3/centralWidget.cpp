@@ -43,7 +43,7 @@ CentralWidget::CentralWidget(QWidget *parent)
 QGroupBox *
 CentralWidget::createTransformControls()
 {
-    const int numOfSpinBoxes = 4, numOfProperties = 3;
+    const int numOfSpinBoxes = 4, numOfProperties = 4;
 
     //Stores the text for each label. Each row represents a
     //different label.
@@ -55,13 +55,13 @@ CentralWidget::createTransformControls()
 
     //Stores the values of the spinbox properties. Each row
     //representes a different spinbox. The column 0 is the
-    //default value, column 1 is the min value, and column
-    //2 is the max value.
+    //min value, column 1 is the max value, and column
+    //2 is the default value, column 3 is the step size.
     int spinBoxValues[numOfSpinBoxes][numOfProperties] = {
-        {100,   5,     400},
-        {0,     0,   360}, 
-        {0,     0,   360}, 
-        {0,     0,   360} };
+        {1,     400,    100,    5},
+        {0,     360,    0,      5}, 
+        {0,     360,    0,      5}, 
+        {0,     360,    0,      5}};
 
     QGridLayout *grid = new QGridLayout();
     QLabel *label;
@@ -78,16 +78,18 @@ CentralWidget::createTransformControls()
 
         //create slider
         slider = new QSlider(Qt::Horizontal);
-        slider->setValue(spinBoxValues[i][0]);
-        slider->setMinimum(spinBoxValues[i][1]);
-        slider->setMaximum(spinBoxValues[i][2]);
+        slider->setMinimum(spinBoxValues[i][0]);
+        slider->setMaximum(spinBoxValues[i][1]);
+        slider->setValue(spinBoxValues[i][2]);
+        slider->setSingleStep(spinBoxValues[i][3]);
         grid->addWidget(slider, i, 1);
 
         //create spin box
         spinBoxes[i] = new QSpinBox();
-        spinBoxes[i]->setValue(spinBoxValues[i][0]);
-        spinBoxes[i]->setMinimum(spinBoxValues[i][1]);
-        spinBoxes[i]->setMaximum(spinBoxValues[i][2]);
+        spinBoxes[i]->setMinimum(spinBoxValues[i][0]);
+        spinBoxes[i]->setMaximum(spinBoxValues[i][1]);
+        spinBoxes[i]->setValue(spinBoxValues[i][2]);
+        spinBoxes[i]->setSingleStep(spinBoxValues[i][3]);
         grid->addWidget(spinBoxes[i], i, 2);
 
         //set signal/slot connections
@@ -127,11 +129,11 @@ CentralWidget::createCountControls()
         "Height:"};
 
     //Stores the values of the spinbox properties. Column 0
-    //is the default value, column 1 is the min value,
-    //column 2 is the max value, and column 3 is the single
-    //step amount.
+    //is the min value, column 1 is the max value, column 2
+    //is the default value, and column 3 is the single step
+    //amount.
     double spinBoxValues[numOfProperties] = {
-        8,     3,      100,    1};
+        1, 100, 1, 1};
 
     //for each spin box
     int i;
@@ -143,9 +145,9 @@ CentralWidget::createCountControls()
 
         //create spin box
         spinBoxes[i] = new QSpinBox();
-        spinBoxes[i]->setValue(spinBoxValues[0]);
-        spinBoxes[i]->setMinimum(spinBoxValues[1]);
-        spinBoxes[i]->setMaximum(spinBoxValues[2]);
+        spinBoxes[i]->setMinimum(spinBoxValues[0]);
+        spinBoxes[i]->setMaximum(spinBoxValues[1]);
+        spinBoxes[i]->setValue(spinBoxValues[2]);
         spinBoxes[i]->setSingleStep(spinBoxValues[3]);
         grid->addWidget(spinBoxes[i], i, 1);
     }
@@ -169,11 +171,10 @@ CentralWidget::createSpacingControls()
     const int numOfProperties = 4;
 
     //Stores the values of the spinbox properties. Column 0
-    //is the default value, column 1 is the min value,
-    //column 2 is the max value, and column 3 is the single
-    //step amount.
+    //is the min value, column 1 is the max value, column 2
+    //is the default value, and column 3 is the step size.
     double spinBoxValues[numOfProperties] = {
-        0.5,     0.25,      6.0,    0.5};
+        0.25,     6.0,      0.5,    0.5};
 
     QGridLayout *grid = new QGridLayout();
 
@@ -183,9 +184,9 @@ CentralWidget::createSpacingControls()
 
     //create spin box
     QDoubleSpinBox *spinBox = new QDoubleSpinBox();
-    spinBox->setValue(spinBoxValues[0]);
-    spinBox->setMinimum(spinBoxValues[1]);
-    spinBox->setMaximum(spinBoxValues[2]);
+    spinBox->setMinimum(spinBoxValues[0]);
+    spinBox->setMaximum(spinBoxValues[1]);
+    spinBox->setValue(spinBoxValues[2]);
     spinBox->setSingleStep(spinBoxValues[3]);
     grid->addWidget(spinBox, 0, 1);
 

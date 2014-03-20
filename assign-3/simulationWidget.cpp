@@ -9,7 +9,7 @@ SimulationWidget::SimulationWidget(QWidget *parent)
         xRot(0),
         yRot(0),
         zRot(0),
-        zoom(0),
+        zoom(100),
         color("green")
 {}//end constructor
 
