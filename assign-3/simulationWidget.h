@@ -5,6 +5,7 @@
 
 
 class QPoint;
+class QAbstractButton;
 
 
 class SimulationWidget : public QGLWidget 
@@ -28,6 +29,7 @@ private:
     int zRot;
 
     int zoom;
+    QString color;
 
     QPoint lastPos;
 
@@ -37,11 +39,12 @@ public slots:
     void setZRot(int angle);
 
     void setZoom(int zoom);
+
+    void setColor(QAbstractButton *);
+
 signals:
     void xRotChanged(int angle);
     void yRotChanged(int angle);
     void zRotChanged(int angle);
-
-    void zoomChanged(int zoom);
 };
 #endif

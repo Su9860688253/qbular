@@ -9,14 +9,15 @@ SimulationWidget::SimulationWidget(QWidget *parent)
         xRot(0),
         yRot(0),
         zRot(0),
-        zoom(0)
+        zoom(0),
+        color("green")
 {}//end constructor
 
 
 void
 SimulationWidget::initializeGL()
 {
-    qglClearColor(Qt::white);
+    glClearColor(0.0, 0.0, 0.0, 0.0);
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
@@ -34,11 +35,21 @@ SimulationWidget::paintGL()
     glLoadIdentity();
     glTranslatef(0.0, 0.0, -10.0);
 
+    //set x/y/z rotation
     glRotatef(xRot, 1.0, 0.0, 0.0);
     glRotatef(yRot, 0.0, 1.0, 0.0);
     glRotatef(zRot, 0.0, 0.0, 1.0);
 
-    glColor4f(1.0, 0.0, 0.0, 0.75);
+    //set color
+    float opacity = 0.75;
+    if (this->color == "red")
+        glColor4f(1.0, 0.0, 0.0, opacity);
+    else if (this->color == "green")
+        glColor4f(0.0, 1.0, 0.0, opacity);
+    else if (this->color == "blue")
+        glColor4f(0.0, 0.0, 1.0, opacity);
+    else
+        glColor4f(1.0, 1.0, 1.0, opacity);
 
     paintCube();
 }//end paintGL
@@ -181,6 +192,7 @@ SimulationWidget::setZRot(int angle)
     }
 }//end setZRot
 
+
 void
 SimulationWidget::setZoom(int zoom)
 {
@@ -196,7 +208,29 @@ SimulationWidget::setZoom(int zoom)
         glScalef(z, z, z);
         glOrtho(-2.0, 2.0, -2.0, 2.0, 1.0, 15.0);
         glMatrixMode(GL_MODELVIEW);
-        emit zoomChanged(this->zoom);
         updateGL();
     }
-}//end setZoom()
+}//end setZoom
+
+
+void
+SimulationWidget::setColor(QAbstractButton *button)
+{
+    QString buttonText, newColor;
+
+    //identify the pressed button
+    buttonText = button->text();
+
+    //trim off last character of buttonText
+    newColor = buttonText.left(buttonText.length() - 1);
+
+    //make text lowercase
+    newColor = newColor.toLower();
+
+    //store new color and redraw simulation if necessary
+    if (newColor != this->color)
+    {
+        this->color = newColor;
+        this->updateGL();
+    }
+}//end setColor

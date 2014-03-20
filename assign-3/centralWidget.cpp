@@ -224,8 +224,8 @@ CentralWidget::createColorControls()
         group->addButton(button);
         grid->addWidget(button, (i % 2), (i > 1));
 
-        //mark the first button as checked
-        if (i == 0)
+        //mark the green button as checked
+        if (i == 2)
             button->setChecked(true);
     }
 
@@ -264,6 +264,9 @@ CentralWidget::setConnections()
     //connect zoom spinbox to simulationWidget
     connect(this->zoom, SIGNAL(valueChanged(int)),
         this->simulationWidget, SLOT(setZoom(int)));
-    connect(this->simulationWidget, SIGNAL(zoomChanged(int)),
-        this->zoom, SLOT(setValue(int)));
+
+    //connect color buttons to simulationWidget
+    connect(this->color, SIGNAL(buttonClicked(QAbstractButton *)),
+        this->simulationWidget, SLOT(setColor(QAbstractButton *)));
+
 }//end setConnections
