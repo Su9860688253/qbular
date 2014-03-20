@@ -260,4 +260,10 @@ CentralWidget::setConnections()
         this->simulationWidget, SLOT(setZRot(int)));
     connect(this->simulationWidget, SIGNAL(zRotChanged(int)),
         this->zRot, SLOT(setValue(int)));
+
+    //connect zoom spinbox to simulationWidget
+    connect(this->zoom, SIGNAL(valueChanged(int)),
+        this->simulationWidget, SLOT(setZoom(int)));
+    connect(this->simulationWidget, SIGNAL(zoomChanged(int)),
+        this->zoom, SLOT(setValue(int)));
 }//end setConnections

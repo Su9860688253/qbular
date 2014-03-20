@@ -8,7 +8,8 @@ SimulationWidget::SimulationWidget(QWidget *parent)
     :   QGLWidget(QGLFormat(QGL::SampleBuffers), parent),
         xRot(0),
         yRot(0),
-        zRot(0)
+        zRot(0),
+        zoom(0)
 {}//end constructor
 
 
@@ -179,3 +180,23 @@ SimulationWidget::setZRot(int angle)
         updateGL();
     }
 }//end setZRot
+
+void
+SimulationWidget::setZoom(int zoom)
+{
+
+    if (zoom != this->zoom)
+    {
+        this->zoom = zoom;
+        float z = this->zoom / 100.0;
+
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+
+        glScalef(z, z, z);
+        glOrtho(-2.0, 2.0, -2.0, 2.0, 1.0, 15.0);
+        glMatrixMode(GL_MODELVIEW);
+        emit zoomChanged(this->zoom);
+        updateGL();
+    }
+}//end setZoom()

@@ -27,6 +27,8 @@ private:
     int yRot;
     int zRot;
 
+    int zoom;
+
     QPoint lastPos;
 
 public slots:
@@ -34,6 +36,7 @@ public slots:
     void setYRot(int angle);
     void setZRot(int angle);
 
+    void setZoom(int zoom);
 signals:
     void xRotChanged(int angle);
     void yRotChanged(int angle);
