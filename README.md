@@ -14,6 +14,7 @@ Outline
 ----
 * Assignment 1 - [Demo UI for the LED Cube Simulator Project][8]
 * Assignment 2 - [Same demo UI as before but with a stock cube simulation][9]
+* Assignment 3 - [Same demo UI but with a custom cube-lattice simulation][10]
 
 [1]: http://www-cs.ccny.cuny.edu/~wolberg/cs221/index.html
 [2]: http://www.ccny.cuny.edu/
@@ -24,3 +25,4 @@ Outline
 [7]: http://en.wikipedia.org/wiki/Microsoft_Kinect
 [8]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-1/ledcube/ 
 [9]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-2/
+[10]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-3/
