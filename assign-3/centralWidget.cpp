@@ -25,6 +25,8 @@ CentralWidget::CentralWidget(QWidget *parent)
     QHBoxLayout *main = new QHBoxLayout();
     main->addLayout(left);
     main->addLayout(right);
+    main->setStretchFactor(left, 0);
+    main->setStretchFactor(right, 1);
     setLayout(main);
 
     //sets the signal/slot connections
