@@ -53,6 +53,35 @@ SimulationWidget::paintGL()
         glColor4f(0.0, 0.0, 1.0, opacity);
     else
         glColor4f(1.0, 1.0, 1.0, opacity);
+/*
+    int i, j, k, spacing = 1.5;
+    for (i = 0; i < this->height; i++)
+    {
+        for (j = 0; j < this->width; j++)
+        {
+            for (k = 0; k < this->length; k++)
+            {
+                paintCube();
+                glTranslatef(spacing, 0.0, 0.0);
+            }
+            glTranslatef(0.0, spacing, 0.0);
+        }
+        glTranslatef(0.0, 0.0, spacing);
+    }
+*/
+
+/*
+int i, j, direction, spacing = 2.0; 
+for (i = 0, direction = 1; i < 5; i++, direction = -direction)
+{
+    for (j = 0; j < 5; j++)
+    {
+        paintCube();
+        glTranslatef(direction * spacing, 0.0, 0.0);
+    }
+    glTranslatef(-spacing, spacing, 0.0);
+}
+*/
 
     paintCube();
 }//end paintGL
