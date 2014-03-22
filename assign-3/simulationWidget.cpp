@@ -182,54 +182,54 @@ SimulationWidget::paintCube()
 
 
 void
-SimulationWidget::setXRot(int angle)
+SimulationWidget::setXRot(int a)
 {
-    normalizeAngle(angle);
-    if (angle != xRot) {
-        xRot = angle;
-        emit xRotChanged(angle);
+    normalizeAngle(a);
+    if (a != xRot) {
+        xRot = a;
+        emit xRotChanged(a);
         updateGL();
     }
 }//end setXRot
 
 
 void
-SimulationWidget::setYRot(int angle)
+SimulationWidget::setYRot(int a)
 {
-    normalizeAngle(angle);
-    if (angle != yRot) {
-        yRot = angle;
-        emit yRotChanged(angle);
+    normalizeAngle(a);
+    if (a != yRot) {
+        yRot = a;
+        emit yRotChanged(a);
         updateGL();
     }
 }//end setYRot
 
 
 void
-SimulationWidget::setZRot(int angle)
+SimulationWidget::setZRot(int a)
 {
-    normalizeAngle(angle);
-    if (angle != zRot) {
-        zRot = angle;
-        emit zRotChanged(angle);
+    normalizeAngle(a);
+    if (a != zRot) {
+        zRot = a;
+        emit zRotChanged(a);
         updateGL();
     }
 }//end setZRot
 
 
 void
-SimulationWidget::setZoom(int zoom)
+SimulationWidget::setZoom(int z)
 {
 
-    if (zoom != this->zoom)
+    if (z != this->zoom)
     {
-        this->zoom = zoom;
-        float z = this->zoom / 100.0;
+        this->zoom = z;
+        float fraction = this->zoom / 100.0;
 
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
 
-        glScalef(z, z, z);
+        glScalef(fraction, fraction, fraction);
         glOrtho(-2.0, 2.0, -2.0, 2.0, 1.0, 15.0);
         glMatrixMode(GL_MODELVIEW);
         updateGL();

@@ -41,11 +41,11 @@ private:
     QPoint lastPos;
 
 public slots:
-    void setXRot(int angle);
-    void setYRot(int angle);
-    void setZRot(int angle);
+    void setXRot(int a);
+    void setYRot(int a);
+    void setZRot(int a);
 
-    void setZoom(int zoom);
+    void setZoom(int z);
 
     void setLength(int l);
     void setWidth(int w);
@@ -53,7 +53,7 @@ public slots:
 
     void setSpacing(double s);
 
-    void setColor(QAbstractButton *);
+    void setColor(QAbstractButton *b);
 
 signals:
     void xRotChanged(int angle);
