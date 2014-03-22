@@ -106,13 +106,13 @@ SimulationWidget::mouseMoveEvent(QMouseEvent *event)
     int dx = event->x() - this->lastPos.x();
     int dy = event->y() - this->lastPos.y();
 
-    if (event->buttons() & Qt::LeftButton) {
+    if (event->buttons() & Qt::LeftButton)
+    {
         setXRot(this->xRot + dy);
         setYRot(this->yRot + dx);
     }
-     else if (event->buttons() & Qt::RightButton) {
+    else if (event->buttons() & Qt::RightButton)
         setZRot(this->zRot + dx);
-    }
 
     this->lastPos = event->pos();
 }//end mouseMoveEvent
