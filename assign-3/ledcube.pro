@@ -12,6 +12,7 @@ INCLUDEPATH += .
 # Input
 HEADERS     += \
     centralWidget.h \
+    properties.h \
     simulationWidget.h
 SOURCES     += \
     main.cpp \

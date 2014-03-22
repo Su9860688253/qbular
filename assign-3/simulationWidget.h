@@ -3,6 +3,7 @@
 
 #include <QtOpenGL/QGLWidget>
 
+#include "properties.h"
 
 class QPoint;
 class QAbstractButton;
@@ -12,7 +13,7 @@ class SimulationWidget : public QGLWidget
 {
     Q_OBJECT;
 public:
-    SimulationWidget(QWidget *parent = 0);
+    SimulationWidget(Properties *prop, QWidget *parent = 0);
 
 protected:
     void initializeGL();

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 
+#include "properties.h"
 
 class QSpinBox;
 class QDoubleSpinBox;
@@ -17,6 +18,8 @@ public:
     CentralWidget(QWidget *parent = 0);
 
 private:
+    Properties *defaultProperties;
+
     //transform controls
     QSpinBox *zoom;
     QSpinBox *xRot;
@@ -38,6 +41,7 @@ private:
     SimulationWidget *simulationWidget; 
 
     //helper functions for constructor
+    void setDefaultProperties();
     QGroupBox *createTransformControls();
     QGroupBox *createCountControls();
     QGroupBox *createSpacingControls();

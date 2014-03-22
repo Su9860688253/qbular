@@ -4,17 +4,17 @@
 #include "simulationWidget.h"
 
 
-SimulationWidget::SimulationWidget(QWidget *parent)
+SimulationWidget::SimulationWidget(Properties *prop, QWidget *parent)
     :   QGLWidget(QGLFormat(QGL::SampleBuffers), parent),
-        zoom(100),
-        xRot(0),
-        yRot(0),
-        zRot(0),
-        length(1),
-        width(1),
-        height(1),
-        spacing(2.0),
-        color("green")
+        zoom(prop->zoom),
+        xRot(prop->xRot),
+        yRot(prop->yRot),
+        zRot(prop->zRot),
+        length(prop->length),
+        width(prop->width),
+        height(prop->height),
+        spacing(prop->spacing),
+        color(prop->color)
 {}//end constructor
 
 

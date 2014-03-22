@@ -1,4 +1,5 @@
 #include <QtGui>
+
 #include "centralWidget.h"
 #include "simulationWidget.h"
 
@@ -6,6 +7,8 @@
 CentralWidget::CentralWidget(QWidget *parent)
     : QWidget(parent)
 {
+    setDefaultProperties();
+
     //adds group boxes to left layout
     QVBoxLayout *left = new QVBoxLayout();
     left->addWidget(this->createTransformControls());
@@ -16,7 +19,8 @@ CentralWidget::CentralWidget(QWidget *parent)
 
     //creates simulation and adds it the right layout
     QSize simulationSize(500, 500);
-    this->simulationWidget = new SimulationWidget();
+    this->simulationWidget =
+        new SimulationWidget(this->defaultProperties);
     simulationWidget->setMinimumSize(simulationSize);
     QHBoxLayout *right = new QHBoxLayout();
     right->addWidget(simulationWidget);
@@ -40,6 +44,26 @@ CentralWidget::CentralWidget(QWidget *parent)
 }//end constructor
 
 
+void
+CentralWidget::setDefaultProperties()
+{
+    this->defaultProperties = new Properties;
+
+    this->defaultProperties->zoom = 10; 
+    this->defaultProperties->xRot = 15; 
+    this->defaultProperties->yRot = 345;
+    this->defaultProperties->zRot = 0;
+
+    this->defaultProperties->length = 5;
+    this->defaultProperties->width = 5;
+    this->defaultProperties->height = 5;
+
+    this->defaultProperties->spacing = 3.0;
+
+    this->defaultProperties->color = "green";
+}//end setDefaultProperties
+
+
 QGroupBox *
 CentralWidget::createTransformControls()
 {
@@ -58,10 +82,10 @@ CentralWidget::createTransformControls()
     //min value, column 1 is the max value, and column
     //2 is the default value, column 3 is the step size.
     int spinBoxValues[numOfSpinBoxes][numOfProperties] = {
-        {1,     400,    100,    5},
-        {0,     360,    0,      5}, 
-        {0,     360,    0,      5}, 
-        {0,     360,    0,      5}};
+        {1,     400,    this->defaultProperties->zoom,    5},
+        {0,     360,    this->defaultProperties->xRot,    5}, 
+        {0,     360,    this->defaultProperties->yRot,    5}, 
+        {0,     360,    this->defaultProperties->zRot,    5}};
 
     QGridLayout *grid = new QGridLayout();
     QLabel *label;
@@ -128,12 +152,14 @@ CentralWidget::createCountControls()
         "Width:",
         "Height:"};
 
-    //Stores the values of the spinbox properties. Column 0
-    //is the min value, column 1 is the max value, column 2
-    //is the default value, and column 3 is the single step
-    //amount.
-    double spinBoxValues[numOfProperties] = {
-        1, 100, 1, 1};
+    //Stores the values of the spinbox properties.  Each row
+    //representes a different spinbox. Column 0 is the min
+    //value, column 1 is the max value, column 2 is the
+    //default value, and column 3 is the single step amount.
+    int spinBoxValues[numOfSpinBoxes][numOfProperties] = {
+        {1, 100, this->defaultProperties->length, 1},
+        {1, 100, this->defaultProperties->width,  1},
+        {1, 100, this->defaultProperties->height, 1}};
 
     //for each spin box
     int i;
@@ -145,10 +171,10 @@ CentralWidget::createCountControls()
 
         //create spin box
         spinBoxes[i] = new QSpinBox();
-        spinBoxes[i]->setMinimum(spinBoxValues[0]);
-        spinBoxes[i]->setMaximum(spinBoxValues[1]);
-        spinBoxes[i]->setValue(spinBoxValues[2]);
-        spinBoxes[i]->setSingleStep(spinBoxValues[3]);
+        spinBoxes[i]->setMinimum(spinBoxValues[i][0]);
+        spinBoxes[i]->setMaximum(spinBoxValues[i][1]);
+        spinBoxes[i]->setValue(spinBoxValues[i][2]);
+        spinBoxes[i]->setSingleStep(spinBoxValues[i][3]);
         grid->addWidget(spinBoxes[i], i, 1);
     }
 
@@ -174,7 +200,7 @@ CentralWidget::createSpacingControls()
     //is the min value, column 1 is the max value, column 2
     //is the default value, and column 3 is the step size.
     double spinBoxValues[numOfProperties] = {
-        2.0,     5.0,      2.0,    0.5};
+        2.0, 5.0, this->defaultProperties->spacing, 0.5};
 
     QGridLayout *grid = new QGridLayout();
 
@@ -205,14 +231,12 @@ QGroupBox *
 CentralWidget::createColorControls()
 {
     const int numOfButtons = 4;
+    QString colorText;
 
-    //Stores the text for each label. Each row represents a
+    //Stores the text for each label. Each column represents a
     //different label.
     QString buttonText[numOfButtons] = {
-        "Red:",
-        "Blue:",
-        "Green:",
-        "White:"};
+        "Red:", "Blue:", "Green:", "White:"};
 
     QGridLayout *grid = new QGridLayout();
     QButtonGroup *group = new QButtonGroup();
@@ -227,8 +251,9 @@ CentralWidget::createColorControls()
         group->addButton(button);
         grid->addWidget(button, (i % 2), (i > 1));
 
-        //mark the green button as checked
-        if (i == 2)
+        //mark the default button as checked
+        colorText = buttonText[i].left(buttonText[i].length() - 1);
+        if (colorText.toLower() == this->defaultProperties->color)
             button->setChecked(true);
     }
 
