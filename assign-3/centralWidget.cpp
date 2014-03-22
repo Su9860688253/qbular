@@ -179,7 +179,7 @@ CentralWidget::createSpacingControls()
     QGridLayout *grid = new QGridLayout();
 
     //create label
-    QLabel *label = new QLabel("Distance:");
+    QLabel *label = new QLabel("Spacing:");
     grid->addWidget(label, 0, 0);
 
     //create spin box
@@ -191,7 +191,7 @@ CentralWidget::createSpacingControls()
     grid->addWidget(spinBox, 0, 1);
 
     //stores spin boxes as member variables
-    this->distance = spinBox;
+    this->spacing = spinBox;
 
     QGroupBox *groupBox = new QGroupBox("LED Spacing");
     groupBox->setLayout(grid);
@@ -277,8 +277,8 @@ CentralWidget::setConnections()
         this->simulationWidget, SLOT(setHeight(int)));
 
     //connect distance spinbox to simulationWidget
-    connect(this->distance, SIGNAL(valueChanged(double)),
-        this->simulationWidget, SLOT(setDistance(double)));
+    connect(this->spacing, SIGNAL(valueChanged(double)),
+        this->simulationWidget, SLOT(setSpacing(double)));
 
     //connect color buttons to simulationWidget
     connect(this->color, SIGNAL(buttonClicked(QAbstractButton *)),

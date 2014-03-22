@@ -28,8 +28,8 @@ private:
     QSpinBox *width;
     QSpinBox *height;
 
-    //distance controls
-    QDoubleSpinBox *distance;
+    //spacing controls
+    QDoubleSpinBox *spacing;
 
     //color controls
     QButtonGroup *color;

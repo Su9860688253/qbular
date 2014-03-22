@@ -34,7 +34,7 @@ private:
     int width;
     int height;
 
-    double distance;
+    double spacing;
 
     QString color;
 
@@ -51,7 +51,7 @@ public slots:
     void setWidth(int w);
     void setHeight(int h);
 
-    void setDistance(double d);
+    void setSpacing(double s);
 
     void setColor(QAbstractButton *);
 

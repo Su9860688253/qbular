@@ -13,7 +13,7 @@ SimulationWidget::SimulationWidget(QWidget *parent)
         length(1),
         width(1),
         height(1),
-        distance(0.5),
+        spacing(0.5),
         color("green")
 {}//end constructor
 
@@ -271,11 +271,11 @@ SimulationWidget::setHeight(int h)
 
 
 void
-SimulationWidget::setDistance(double d)
+SimulationWidget::setSpacing(double s)
 {
-    this->distance = d;
+    this->spacing = s;
     updateGL();
-}//end setDistance
+}//end setSpacing
 
 
 void
