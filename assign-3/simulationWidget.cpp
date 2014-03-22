@@ -107,7 +107,7 @@ SimulationWidget::resizeGL(int width, int height)
 void
 SimulationWidget::mousePressEvent(QMouseEvent *event)
 {
-    lastPos = event->pos();
+    this->lastPos = event->pos();
 }//end mousePressEvent
 
 
