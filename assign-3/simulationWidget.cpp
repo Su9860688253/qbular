@@ -6,10 +6,10 @@
 
 SimulationWidget::SimulationWidget(QWidget *parent)
     :   QGLWidget(QGLFormat(QGL::SampleBuffers), parent),
+        zoom(100),
         xRot(0),
         yRot(0),
         zRot(0),
-        zoom(100),
         length(1),
         width(1),
         height(1),
@@ -193,6 +193,14 @@ SimulationWidget::paintCube()
 
 
 void
+SimulationWidget::setZoom(int z)
+{
+    this->zoom = z;
+    updateGL();
+}//end setZoom
+
+
+void
 SimulationWidget::setXRot(int a)
 {
     normalizeAngle(a);
@@ -226,14 +234,6 @@ SimulationWidget::setZRot(int a)
         updateGL();
     }
 }//end setZRot
-
-
-void
-SimulationWidget::setZoom(int z)
-{
-    this->zoom = z;
-    updateGL();
-}//end setZoom
 
 
 void

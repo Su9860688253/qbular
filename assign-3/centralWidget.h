@@ -23,15 +23,15 @@ private:
     QSpinBox *yRot;
     QSpinBox *zRot;
 
-    //count controls
+    //led count controls
     QSpinBox *length;
     QSpinBox *width;
     QSpinBox *height;
 
-    //spacing controls
+    //led spacing controls
     QDoubleSpinBox *spacing;
 
-    //color controls
+    //led color controls
     QButtonGroup *color;
 
     //simulation

@@ -246,6 +246,10 @@ CentralWidget::createColorControls()
 void
 CentralWidget::setConnections()
 {
+    //connect zoom spinbox to simulationWidget
+    connect(this->zoom, SIGNAL(valueChanged(int)),
+        this->simulationWidget, SLOT(setZoom(int)));
+
     //connect xRot spinbox to centralWidget
     connect(this->xRot, SIGNAL(valueChanged(int)),
         this->simulationWidget, SLOT(setXRot(int)));
@@ -264,10 +268,6 @@ CentralWidget::setConnections()
     connect(this->simulationWidget, SIGNAL(zRotChanged(int)),
         this->zRot, SLOT(setValue(int)));
 
-    //connect zoom spinbox to simulationWidget
-    connect(this->zoom, SIGNAL(valueChanged(int)),
-        this->simulationWidget, SLOT(setZoom(int)));
-
     //connect count spinboxes to simulationWidget
     connect(this->length, SIGNAL(valueChanged(int)),
         this->simulationWidget, SLOT(setLength(int)));
@@ -276,7 +276,7 @@ CentralWidget::setConnections()
     connect(this->height, SIGNAL(valueChanged(int)),
         this->simulationWidget, SLOT(setHeight(int)));
 
-    //connect distance spinbox to simulationWidget
+    //connect spacing spinbox to simulationWidget
     connect(this->spacing, SIGNAL(valueChanged(double)),
         this->simulationWidget, SLOT(setSpacing(double)));
 

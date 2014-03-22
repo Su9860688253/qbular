@@ -24,11 +24,10 @@ protected:
     void paintCube();
 
 private:
+    int zoom;
     int xRot;
     int yRot;
     int zRot;
-
-    int zoom;
 
     int length;
     int width;
@@ -41,11 +40,10 @@ private:
     QPoint lastPos;
 
 public slots:
+    void setZoom(int z);
     void setXRot(int a);
     void setYRot(int a);
     void setZRot(int a);
-
-    void setZoom(int z);
 
     void setLength(int l);
     void setWidth(int w);
