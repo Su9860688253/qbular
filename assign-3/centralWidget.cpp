@@ -174,7 +174,7 @@ CentralWidget::createSpacingControls()
     //is the min value, column 1 is the max value, column 2
     //is the default value, and column 3 is the step size.
     double spinBoxValues[numOfProperties] = {
-        0.25,     6.0,      0.5,    0.5};
+        2.0,     5.0,      2.0,    0.5};
 
     QGridLayout *grid = new QGridLayout();
 

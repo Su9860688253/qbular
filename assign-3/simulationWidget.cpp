@@ -13,7 +13,7 @@ SimulationWidget::SimulationWidget(QWidget *parent)
         length(1),
         width(1),
         height(1),
-        spacing(0.5),
+        spacing(2.0),
         color("green")
 {}//end constructor
 
@@ -56,7 +56,7 @@ SimulationWidget::paintGL()
         glColor4f(1.0, 1.0, 1.0, opacity);
 
     //loop over lattice dimensions
-    int i, j, k, spacing = 2;
+    int i, j, k;
     for (i = 0; i < this->height; i++)
     {
         for (j = 0; j < this->width; j++)
@@ -66,15 +66,18 @@ SimulationWidget::paintGL()
                 paintCube();
 
                 //advance in the x direction
-                glTranslatef(spacing, 0.0, 0.0);
+                glTranslatef(this->spacing, 0.0, 0.0);
             }
 
-            //retreat in the x direction and advance in the y direction
-            glTranslatef(-1 * this->length * spacing, spacing, 0.0);
+            //retreat in the x direction and advance in the
+            //y direction
+            glTranslatef(-1 * this->length * this->spacing,
+                this->spacing, 0.0);
         }
 
         //retreat in the y direction and advance in the z direction
-        glTranslatef(0.0, -1 * this->width * spacing, spacing);
+        glTranslatef(0.0, -1 * this->width * this->spacing,
+            this->spacing);
     }
 }//end paintGL
 
