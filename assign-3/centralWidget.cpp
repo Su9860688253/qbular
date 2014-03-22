@@ -12,7 +12,7 @@ CentralWidget::CentralWidget(QWidget *parent)
     //adds group boxes to left layout
     QVBoxLayout *left = new QVBoxLayout();
     left->addWidget(this->createTransformControls());
-    left->addWidget(this->createCountControls());
+    left->addWidget(this->createSizeControls());
     left->addWidget(this->createSpacingControls());
     left->addWidget(this->createColorControls());
     left->addStretch();
@@ -138,7 +138,7 @@ CentralWidget::createTransformControls()
 
 
 QGroupBox *
-CentralWidget::createCountControls()
+CentralWidget::createSizeControls()
 {
     const int numOfSpinBoxes = 3, numOfProperties = 4;
     QGridLayout *grid = new QGridLayout();
@@ -183,12 +183,12 @@ CentralWidget::createCountControls()
     this->width= spinBoxes[1];
     this->height = spinBoxes[2];
 
-    QGroupBox *groupBox = new QGroupBox("LED Count");
+    QGroupBox *groupBox = new QGroupBox("Lattice Size");
     groupBox->setLayout(grid);
     groupBox->setFixedWidth(400);
 
     return groupBox;
-}//end createCountControls()
+}//end createSizeControls()
 
 
 QGroupBox *
@@ -293,7 +293,7 @@ CentralWidget::setConnections()
     connect(this->simulationWidget, SIGNAL(zRotChanged(int)),
         this->zRot, SLOT(setValue(int)));
 
-    //connect count spinboxes to simulationWidget
+    //connect size spinboxes to simulationWidget
     connect(this->length, SIGNAL(valueChanged(int)),
         this->simulationWidget, SLOT(setLength(int)));
     connect(this->width, SIGNAL(valueChanged(int)),

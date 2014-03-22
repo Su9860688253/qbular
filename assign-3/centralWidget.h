@@ -26,7 +26,7 @@ private:
     QSpinBox *yRot;
     QSpinBox *zRot;
 
-    //led count controls
+    //lattice size controls
     QSpinBox *length;
     QSpinBox *width;
     QSpinBox *height;
@@ -43,7 +43,7 @@ private:
     //helper functions for constructor
     void setDefaultProperties();
     QGroupBox *createTransformControls();
-    QGroupBox *createCountControls();
+    QGroupBox *createSizeControls();
     QGroupBox *createSpacingControls();
     QGroupBox *createColorControls();
     void setConnections();
