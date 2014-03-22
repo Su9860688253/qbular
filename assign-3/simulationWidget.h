@@ -34,6 +34,8 @@ private:
     int width;
     int height;
 
+    double distance;
+
     QString color;
 
     QPoint lastPos;
@@ -49,7 +51,10 @@ public slots:
     void setWidth(int w);
     void setHeight(int h);
 
+    void setDistance(double d);
+
     void setColor(QAbstractButton *);
+
 signals:
     void xRotChanged(int angle);
     void yRotChanged(int angle);

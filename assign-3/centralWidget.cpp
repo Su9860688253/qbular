@@ -276,6 +276,10 @@ CentralWidget::setConnections()
     connect(this->height, SIGNAL(valueChanged(int)),
         this->simulationWidget, SLOT(setHeight(int)));
 
+    //connect distance spinbox to simulationWidget
+    connect(this->distance, SIGNAL(valueChanged(double)),
+        this->simulationWidget, SLOT(setDistance(double)));
+
     //connect color buttons to simulationWidget
     connect(this->color, SIGNAL(buttonClicked(QAbstractButton *)),
         this->simulationWidget, SLOT(setColor(QAbstractButton *)));
