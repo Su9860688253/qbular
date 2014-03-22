@@ -220,53 +220,40 @@ SimulationWidget::setZRot(int a)
 void
 SimulationWidget::setZoom(int z)
 {
+    this->zoom = z;
+    float fraction = this->zoom / 100.0;
 
-    if (z != this->zoom)
-    {
-        this->zoom = z;
-        float fraction = this->zoom / 100.0;
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
 
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-
-        glScalef(fraction, fraction, fraction);
-        glOrtho(-2.0, 2.0, -2.0, 2.0, 1.0, 15.0);
-        glMatrixMode(GL_MODELVIEW);
-        updateGL();
-    }
+    glScalef(fraction, fraction, fraction);
+    glOrtho(-2.0, 2.0, -2.0, 2.0, 1.0, 15.0);
+    glMatrixMode(GL_MODELVIEW);
+    updateGL();
 }//end setZoom
 
 
 void
 SimulationWidget::setLength(int l)
 {
-    if (l != this->length)
-    {
-        this->length = l;
-        updateGL();
-    }
+    this->length = l;
+    updateGL();
 }//end set
 
 
 void
 SimulationWidget::setWidth(int w)
 {
-    if (w != this->width)
-    {
-        this->width = w;
-        updateGL();
-    }
+    this->width = w;
+    updateGL();
 }//end set
 
 
 void
 SimulationWidget::setHeight(int h)
 {
-    if (h != this->height)
-    {
-        this->height = h;
-        updateGL();
-    }
+    this->height = h;
+    updateGL();
 }//end set
 
 
@@ -292,10 +279,7 @@ SimulationWidget::setColor(QAbstractButton *button)
     //make text lowercase
     newColor = newColor.toLower();
 
-    //store new color and redraw simulation if necessary
-    if (newColor != this->color)
-    {
-        this->color = newColor;
-        this->updateGL();
-    }
+    //store new color and redraw simulation 
+    this->color = newColor;
+    this->updateGL();
 }//end setColor
