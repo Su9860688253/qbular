@@ -43,6 +43,14 @@ SimulationWidget::paintGL()
     glRotatef(xRot, 1.0, 0.0, 0.0);
     glRotatef(yRot, 0.0, 1.0, 0.0);
     glRotatef(zRot, 0.0, 0.0, 1.0);
+    
+    //set zoom
+    float fraction = this->zoom / 100.0;
+    //glMatrixMode(GL_PROJECTION);
+    //glLoadIdentity();
+    glScalef(fraction, fraction, fraction);
+    //glOrtho(-2.0, 2.0, -2.0, 2.0, 1.0, 15.0);
+    //glMatrixMode(GL_MODELVIEW);
 
     //set color
     float opacity = 0.75;
@@ -224,14 +232,6 @@ void
 SimulationWidget::setZoom(int z)
 {
     this->zoom = z;
-    float fraction = this->zoom / 100.0;
-
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-
-    glScalef(fraction, fraction, fraction);
-    glOrtho(-2.0, 2.0, -2.0, 2.0, 1.0, 15.0);
-    glMatrixMode(GL_MODELVIEW);
     updateGL();
 }//end setZoom
 
