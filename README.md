@@ -31,6 +31,6 @@ Outline
 [6]: http://www.opengl.org/
 [7]: http://en.wikipedia.org/wiki/Microsoft_Kinect
 [8]: https://bitbucket.org/ian_s_mcb/software-design-team-spring2014
-[9]: https://bitbucket.org/ian_s_mcb/software-design-individ-spring2014/src/tip/assign-1/ledcube/ 
+[9]: https://bitbucket.org/ian_s_mcb/software-design-individ-spring2014/src/tip/assign-1/ 
 [10]: https://bitbucket.org/ian_s_mcb/software-design-individ-spring2014/src/tip/assign-2/
 [11]: https://bitbucket.org/ian_s_mcb/software-design-individ-spring2014/src/tip/assign-3/
