@@ -17,32 +17,6 @@ Prerequisites
 ----
 * [Qt library][5] version 4.x or higher
 
-Specs
-----
-* one panel for the OpenGL simulation
-    * serves as a placehold for now
-    * eventually will contain a QGlWidget object
-* group boxes for options that control the following:
-    * transforms
-    * resolution
-    * LED spacing
-    * LED color
-* transforms options
-    * specifies the x/y/z rotation and zoom
-    * uses sliders + spinbox widgets
-* resolution controls
-    * specifies the dimension of the cube (in terms of number of LEDs)
-    * uses spinbox widgets
-* LED spacing controls
-    * units are inches
-    * default value: 0.5"
-* LED color controls
-    * color choices: red, blue, green, white
-    * uses radio button widgets
-* sliders and spinboxes should be hooked together with signals/slots
-* transform options should be in class of its own
-* the other options should be grouped together in one class
-
 [1]: http://www.instructables.com/id/Led-Cube-8x8x8/
 [2]: http://en.wikipedia.org/wiki/Arduino
 [3]: http://en.wikipedia.org/wiki/C%2B%2B
