@@ -3,7 +3,7 @@ syntax: glob
 *.swp
 *.o
 Makefile
-assign-1/ledcube/ledcube
+assign-1/ledcube
 assign-2/ledcube
 assign-3/ledcube
 qrc_*
