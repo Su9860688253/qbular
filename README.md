@@ -21,7 +21,7 @@ Outline
 ----
 * Assignment 1 - [Demo UI for the LED Cube Simulator Project][9]
 * Assignment 2 - [Same demo UI as before but with a stock cube simulation][10]
-* Assignment 3 - [Same demo UI but with a custom cube-lattice simulation][11]
+* Assignment 3 - [Working UI with a custom cube-lattice simulation][11]
 
 [1]: http://www-cs.ccny.cuny.edu/~wolberg/cs221/index.html
 [2]: http://www.ccny.cuny.edu/
