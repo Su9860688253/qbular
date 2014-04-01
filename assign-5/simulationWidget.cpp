@@ -51,6 +51,8 @@ SimulationWidget::paintGL()
     float fraction = this->zoom / 100.0;
     glScalef(fraction, fraction, fraction);
 
+    this->paintAxis();
+
     //set color
     float opacity = 0.75;
     if (this->color == "red")
@@ -145,6 +147,27 @@ SimulationWidget::normalizeAngle(int &angle)
     while (angle > 360)
         angle -= 360; 
 }//end normalizeAngle
+
+
+void
+SimulationWidget::paintAxis()
+{
+    //set color to yellow
+    glColor4f(1.0, 1.0, 0.0, 1.0);
+
+    glBegin(GL_LINES);
+
+    glVertex3f(-3 * this->length, 0, 0); 
+    glVertex3f(3 * this->length, 0, 0); 
+
+    glVertex3f(0, -3 * this->width, 0); 
+    glVertex3f(0, 3 * this->width, 0); 
+
+    glVertex3f(0, 0, -3 * this->height); 
+    glVertex3f(0, 0, 3 * this->height);
+
+    glEnd();
+}//end paintAxis
 
 
 void
