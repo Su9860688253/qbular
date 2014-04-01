@@ -14,14 +14,12 @@ featured material about the following technologies:
 * [OpenGL][6]
 * [Microsoft Kinect][7]
 
-The Software Design lab class also involved some work done in teams.
-That team work can be found in [this repo][8].
-
 Outline
 ----
-* Assignment 1 - [Demo UI for the LED Cube Simulator Project][9]
-* Assignment 2 - [Same demo UI as before but with a stock cube simulation][10]
-* Assignment 3 - [Working UI with a custom cube-lattice simulation][11]
+* Assignment 1 - [Demo UI][8]
+* Assignment 2 - [Demo UI with a stock cube simulation][9]
+* Assignment 3 - [Working tool with a custom lattice simulation][10]
+* Assignment 4 - [Tool with expanded and reorganized UI][11]
 
 [1]: http://www-cs.ccny.cuny.edu/~wolberg/cs221/index.html
 [2]: http://www.ccny.cuny.edu/
@@ -30,7 +28,7 @@ Outline
 [5]: http://en.wikipedia.org/wiki/Qt_%28software%29
 [6]: http://www.opengl.org/
 [7]: http://en.wikipedia.org/wiki/Microsoft_Kinect
-[8]: https://bitbucket.org/ian_s_mcb/software-design-team-spring2014
-[9]: https://bitbucket.org/ian_s_mcb/software-design-individ-spring2014/src/tip/assign-1/ 
-[10]: https://bitbucket.org/ian_s_mcb/software-design-individ-spring2014/src/tip/assign-2/
-[11]: https://bitbucket.org/ian_s_mcb/software-design-individ-spring2014/src/tip/assign-3/
+[8]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-1/ 
+[9]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-2/
+[10]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-3/
+[11]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-4/

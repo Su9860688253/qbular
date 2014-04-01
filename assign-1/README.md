@@ -3,7 +3,22 @@ LEDCube
 
 About
 ----
-This program is a demo of the user interface for an application that simulates a popular electronics project called an [LED cube][1]. An LED cube is a lattice-shaped structure of Light Emitting Diodes (LED) that are controlled by a microcontroller, like an [Arduino][2], for the purpose of putting on a 3D light show. This program is written in [C++][3] and uses the [Qt framework][4].
+This program is a simulation tool for a popular electronics project 
+called an [LED cube][1]. An LED cube is a lattice-shaped structure of
+Light Emitting Diodes (LED) that are controlled by a microcontroller, 
+like an [Arduino][2], for the purpose of putting on a 3D light show. 
+This simulation tool for LED cubes is helpful for two reasons. 1) It 
+makes it possible to design custom light shows without dealing with 
+hardware details. 2) It helps gauge how large of a cube is needed to 
+properly display a given light show.
+
+This program is the first iteration of the simulation tool. It 
+consists of a prototypical User Interface (UI) and a simulation 
+placeholder. Future versions of the program will add more 
+functionality.
+
+This program is written in [C++][3], and it uses the 
+[Qt framework][4] for the Graphical User Interface (GUI) widgets.
 
 Installation
 ----
