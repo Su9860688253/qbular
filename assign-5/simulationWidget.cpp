@@ -2,7 +2,7 @@
 #include <QtOpenGL>
 
 #include "simulationWidget.h"
-
+#include <iostream>
 
 SimulationWidget::SimulationWidget(Properties *prop, QWidget *parent)
     :   QGLWidget(QGLFormat(QGL::SampleBuffers), parent),
@@ -52,6 +52,12 @@ SimulationWidget::paintGL()
     glScalef(fraction, fraction, fraction);
 
     this->paintAxis();
+
+    //move to lattice center
+    glTranslatef(
+        -0.5*(float)(this->length - 1)*this->spacing,
+        -0.5*(float)(this->width - 1)*this->spacing,
+        -0.5*(float)(this->height - 1)*this->spacing);
 
     //set color
     float opacity = 0.75;

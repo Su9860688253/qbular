@@ -63,7 +63,7 @@ CentralWidget::setDefaultProperties()
 
     this->defaultProperties->zoom = 10; 
     this->defaultProperties->xRot = 15; 
-    this->defaultProperties->yRot = 345;
+    this->defaultProperties->yRot = 60;
     this->defaultProperties->zRot = 0;
 
     this->defaultProperties->length = 5;
