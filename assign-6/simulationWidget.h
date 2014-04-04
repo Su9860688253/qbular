@@ -24,6 +24,7 @@ protected:
     void normalizeAngle(int &angle);
     void paintAxis();
     void paintOutline();
+    void paintLed(int x, int y, int z);
     void paintCube();
 
 private:

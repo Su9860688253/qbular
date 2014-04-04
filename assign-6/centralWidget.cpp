@@ -76,7 +76,7 @@ CentralWidget::setDefaultProperties()
     this->defaultProperties->draw = "cubes";
     this->defaultProperties->guide = "both";
 
-    this->defaultProperties->source = "none";
+    this->defaultProperties->source = "function";
     this->defaultProperties->function = "sine";
 }//end setDefaultProperties
 

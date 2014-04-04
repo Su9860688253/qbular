@@ -52,6 +52,7 @@ SimulationWidget::paintGL()
     float fraction = this->zoom / 100.0;
     glScalef(fraction, fraction, fraction);
 
+    //paint axis if necessary
     if (this->guide == "axis" || this->guide == "both")
         this->paintAxis();
 
@@ -61,6 +62,7 @@ SimulationWidget::paintGL()
         -0.5*(float)(this->width - 1)*this->spacing,
         -0.5*(float)(this->height - 1)*this->spacing);
 
+    //paint outline if necessary
     if (this->guide == "box" || this->guide == "both")
         this->paintOutline();
 
@@ -86,6 +88,7 @@ SimulationWidget::paintGL()
         {
             for (k = 0; k < this->length; k++)
             {
+/*
                 if (this->draw == "cubes")
                     paintCube();
                 else
@@ -94,6 +97,9 @@ SimulationWidget::paintGL()
                     glVertex3f(0, 0, 0);
                     glEnd();
                 }
+*/
+                this->paintLed(k, j, i);
+
                 //advance in the x direction
                 glTranslatef(this->spacing, 0.0, 0.0);
             }
@@ -226,6 +232,29 @@ SimulationWidget::paintOutline()
 
     glEnd();
 }//end paintOutline
+
+
+void
+SimulationWidget::paintLed(int x, int y, int z)
+{
+    bool selective = this->source == "function";
+    float pi = 3.14;
+    int sine = round(
+        3*sin(pi/4 * x) +
+        3*sin(pi/4 * z) + 
+        (float)(this->width - 2)*0.5);
+
+    if ((y == sine) || !selective)
+    {
+        if (this->draw == "cubes")  this->paintCube();
+        else
+        {
+            glBegin(GL_POINTS);
+            glVertex3f(0, 0, 0); 
+            glEnd();
+        } 
+    }
+}//end paintLed
 
 
 void
