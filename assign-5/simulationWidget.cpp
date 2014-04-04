@@ -185,7 +185,9 @@ void
 SimulationWidget::paintOutline()
 {
     float start = -0.5;
-    float dimension = (float)(this->length - 1)*this->spacing + 0.5;
+    float dimX = (float)(this->length - 1)*this->spacing + 0.5;
+    float dimY = (float)(this->width - 1)*this->spacing + 0.5;
+    float dimZ = (float)(this->height - 1)*this->spacing + 0.5;
 
     //set color to yellow
     glColor4f(1.0, 1.0, 0.0, 1.0);
@@ -194,33 +196,33 @@ SimulationWidget::paintOutline()
 
     //bottom face
     glVertex3f(start, start, start);
-    glVertex3f(dimension, start, start);
-    glVertex3f(dimension, start, start);
-    glVertex3f(dimension, start, dimension);
-    glVertex3f(dimension, start, dimension);
-    glVertex3f(start, start, dimension);
-    glVertex3f(start, start, dimension);
+    glVertex3f(dimX, start, start);
+    glVertex3f(dimX, start, start);
+    glVertex3f(dimX, start, dimZ);
+    glVertex3f(dimX, start, dimZ);
+    glVertex3f(start, start, dimZ);
+    glVertex3f(start, start, dimZ);
     glVertex3f(start, start, start);
 
     //top face
-    glVertex3f(start, dimension, start);
-    glVertex3f(dimension, dimension, start);
-    glVertex3f(dimension, dimension, start);
-    glVertex3f(dimension, dimension, dimension);
-    glVertex3f(dimension, dimension, dimension);
-    glVertex3f(start, dimension, dimension);
-    glVertex3f(start, dimension, dimension);
-    glVertex3f(start, dimension, start);
+    glVertex3f(start, dimY, start);
+    glVertex3f(dimX, dimY, start);
+    glVertex3f(dimX, dimY, start);
+    glVertex3f(dimX, dimY, dimZ);
+    glVertex3f(dimX, dimY, dimZ);
+    glVertex3f(start, dimY, dimZ);
+    glVertex3f(start, dimY, dimZ);
+    glVertex3f(start, dimY, start);
 
     //vertical connections between top and bottom
     glVertex3f(start, start, start);
-    glVertex3f(start, dimension, start);
-    glVertex3f(dimension, start, start);
-    glVertex3f(dimension, dimension, start);
-    glVertex3f(dimension, start, dimension);
-    glVertex3f(dimension, dimension, dimension);
-    glVertex3f(start, start, dimension);
-    glVertex3f(start, dimension, dimension);
+    glVertex3f(start, dimY, start);
+    glVertex3f(dimX, start, start);
+    glVertex3f(dimX, dimY, start);
+    glVertex3f(dimX, start, dimZ);
+    glVertex3f(dimX, dimY, dimZ);
+    glVertex3f(start, start, dimZ);
+    glVertex3f(start, dimY, dimZ);
 
     glEnd();
 }//end paintOutline
