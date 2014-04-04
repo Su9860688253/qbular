@@ -20,6 +20,7 @@ Outline
 * Assignment 2 - [Demo UI with a stock cube simulation][9]
 * Assignment 3 - [Working tool with a custom lattice simulation][10]
 * Assignment 4 - [Tool with expanded and reorganized UI][11]
+* Assignment 5 - [Tool with corrected centering and guidelines][12]
 
 [1]: http://www-cs.ccny.cuny.edu/~wolberg/cs221/index.html
 [2]: http://www.ccny.cuny.edu/
@@ -32,3 +33,4 @@ Outline
 [9]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-2/
 [10]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-3/
 [11]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-4/
+[12]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-5/

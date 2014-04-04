@@ -3,8 +3,9 @@ LEDCube
 
 About
 ----
-This program is an updated version of the program from Assignment 4. 
-<<DESCRIPTION_HERE>>
+This program is an updated version of the program from Assignment 4.
+It contains one important bug fix (lattice centering) and one new,
+fully functional control feature (guidelines).
 
 Just to recap: this program is a simulation tool for a popular 
 electronics project called an [LED cube][1]. An LED cube is a 
