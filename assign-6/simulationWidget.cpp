@@ -2,7 +2,7 @@
 #include <QtOpenGL>
 
 #include "simulationWidget.h"
-#include <iostream>
+
 
 SimulationWidget::SimulationWidget(Properties *prop, QWidget *parent)
     :   QGLWidget(QGLFormat(QGL::SampleBuffers), parent),
