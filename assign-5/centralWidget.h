@@ -39,6 +39,7 @@ private:
     //lattice style controls
     QComboBox *color;
     QComboBox *draw;
+    QComboBox *guide;
 
     //input source controls
     QButtonGroup *source;

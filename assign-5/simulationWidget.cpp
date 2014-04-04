@@ -16,6 +16,7 @@ SimulationWidget::SimulationWidget(Properties *prop, QWidget *parent)
         spacing(prop->spacing),
         color(prop->color),
         draw(prop->draw),
+        guide(prop->guide),
         source(prop->source),
         function(prop->function)
 {}//end constructor
@@ -51,7 +52,8 @@ SimulationWidget::paintGL()
     float fraction = this->zoom / 100.0;
     glScalef(fraction, fraction, fraction);
 
-    this->paintAxis();
+    if (this->guide == "axis" || this->guide == "both")
+        this->paintAxis();
 
     //move to lattice center
     glTranslatef(
@@ -59,7 +61,8 @@ SimulationWidget::paintGL()
         -0.5*(float)(this->width - 1)*this->spacing,
         -0.5*(float)(this->height - 1)*this->spacing);
 
-    this->paintOutline();
+    if (this->guide == "box" || this->guide == "both")
+        this->paintOutline();
 
     //set color
     float opacity = 0.75;
@@ -360,3 +363,11 @@ SimulationWidget::setDraw(const QString &d)
     this->draw = d.toLower();
     this->updateGL();
 }//end setDraw
+
+
+void
+SimulationWidget::setGuide(const QString &g)
+{
+    this->guide = g.toLower();
+    this->updateGL();
+}//end setGuide

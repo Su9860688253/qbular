@@ -74,6 +74,7 @@ CentralWidget::setDefaultProperties()
 
     this->defaultProperties->color = "green";
     this->defaultProperties->draw = "cubes";
+    this->defaultProperties->guide = "both";
 
     this->defaultProperties->source = "none";
     this->defaultProperties->function = "sine";
@@ -246,14 +247,14 @@ CentralWidget::createStyleControls()
 
     //create draw label
     QLabel *labelDraw = new QLabel("Draw:");
-    grid->addWidget(labelDraw, 0, 2);
+    grid->addWidget(labelDraw, 1, 0);
 
     //create draw combobox
     QComboBox *comboBoxDraw = new QComboBox();
     QStringList stringListDraw;
     stringListDraw << "Cubes" << "Points";
     comboBoxDraw->insertItems(0, stringListDraw);
-    grid->addWidget(comboBoxDraw, 0, 3);
+    grid->addWidget(comboBoxDraw, 1, 1);
 
     //set draw combobox default value
     if (this->defaultProperties->draw == "cubes")
@@ -261,9 +262,28 @@ CentralWidget::createStyleControls()
     else
         comboBoxDraw->setCurrentIndex(1);
 
+    //create guide label
+    QLabel *labelGuide = new QLabel("Guidelines:");
+    grid->addWidget(labelGuide, 0, 2);
+
+    //create guide combobox
+    QComboBox *comboBoxGuide = new QComboBox();
+    QStringList stringListGuide;
+    stringListGuide << "None" << "Axis" << "Box" << "Both";
+    comboBoxGuide->insertItems(0, stringListGuide);
+    grid->addWidget(comboBoxGuide, 0, 3);
+
+    //set color combobox default value
+    for (i = 0; i < stringListGuide.size(); i++)
+    {
+        if (stringListGuide.at(i).toLower() == this->defaultProperties->guide)
+            comboBoxGuide->setCurrentIndex(i);
+    }
+
     //stores both comboboxes as member variables
     this->color = comboBoxColor;
     this->draw = comboBoxDraw;
+    this->guide = comboBoxGuide;
 
     //create a groupbox to hold labels and comboboxes
     QGroupBox *groupBox = new QGroupBox("Lattice Style");
@@ -426,13 +446,13 @@ CentralWidget::setConnections()
     connect(this->spacing, SIGNAL(valueChanged(double)),
         this->simulationWidget, SLOT(setSpacing(double)));
 
-    //connect color combobox to simulationWidget
+    //connect style comboboxes to simulationWidget
     connect(this->color, SIGNAL(currentIndexChanged(const QString &)),
         this->simulationWidget, SLOT(setColor(const QString &)));
-
-    //connect draw combobox to simulationWidget
     connect(this->draw, SIGNAL(currentIndexChanged(const QString &)),
         this->simulationWidget, SLOT(setDraw(const QString &)));
+    connect(this->guide, SIGNAL(currentIndexChanged(const QString &)),
+        this->simulationWidget, SLOT(setGuide(const QString &)));
 
     //connect choose file button to file dialog
     connect(this->chooseFile, SIGNAL(released()),

@@ -40,6 +40,7 @@ private:
 
     QString color;
     QString draw;
+    QString guide;
 
     QString source;
     QString function;
@@ -60,6 +61,7 @@ public slots:
 
     void setColor(const QString &c);
     void setDraw(const QString &d);
+    void setGuide(const QString &g);
 
 signals:
     void xRotChanged(int angle);

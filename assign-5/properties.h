@@ -19,6 +19,7 @@ typedef struct properties
 
     QString color;
     QString draw;
+    QString guide;
 
     QString source;
     QString function;
