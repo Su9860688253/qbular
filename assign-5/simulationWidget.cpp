@@ -59,6 +59,8 @@ SimulationWidget::paintGL()
         -0.5*(float)(this->width - 1)*this->spacing,
         -0.5*(float)(this->height - 1)*this->spacing);
 
+    this->paintOutline();
+
     //set color
     float opacity = 0.75;
     if (this->color == "red")
@@ -177,54 +179,93 @@ SimulationWidget::paintAxis()
 
 
 void
+SimulationWidget::paintOutline()
+{
+    float start = -0.5;
+    float dimension = (float)(this->length - 1)*this->spacing + 0.5;
+
+    //set color to yellow
+    glColor4f(1.0, 1.0, 0.0, 1.0);
+
+    glBegin(GL_LINES);
+
+    //bottom face
+    glVertex3f(start, start, start);
+    glVertex3f(dimension, start, start);
+    glVertex3f(dimension, start, start);
+    glVertex3f(dimension, start, dimension);
+    glVertex3f(dimension, start, dimension);
+    glVertex3f(start, start, dimension);
+    glVertex3f(start, start, dimension);
+    glVertex3f(start, start, start);
+
+    //top face
+    glVertex3f(start, dimension, start);
+    glVertex3f(dimension, dimension, start);
+    glVertex3f(dimension, dimension, start);
+    glVertex3f(dimension, dimension, dimension);
+    glVertex3f(dimension, dimension, dimension);
+    glVertex3f(start, dimension, dimension);
+    glVertex3f(start, dimension, dimension);
+    glVertex3f(start, dimension, start);
+
+    //vertical connections between top and bottom
+    glVertex3f(start, start, start);
+    glVertex3f(start, dimension, start);
+    glVertex3f(dimension, start, start);
+    glVertex3f(dimension, dimension, start);
+    glVertex3f(dimension, start, dimension);
+    glVertex3f(dimension, dimension, dimension);
+    glVertex3f(start, start, dimension);
+    glVertex3f(start, dimension, dimension);
+
+    glEnd();
+}//end paintOutline
+
+
+void
 SimulationWidget::paintCube()
 {
-	//bottom
-    glBegin(GL_POLYGON);
-    glVertex3f(  0.5, -0.5, -0.5 );
-    glVertex3f(  0.5, -0.5,  0.5 );
-    glVertex3f( -0.5, -0.5,  0.5 );
-    glVertex3f( -0.5, -0.5, -0.5 );
-    glEnd();
+	float dimension = 0.5;
+
+    glBegin(GL_QUADS);
+
+    //bottom
+    glVertex3f(  dimension, -dimension, -dimension);
+    glVertex3f(  dimension, -dimension,  dimension);
+    glVertex3f( -dimension, -dimension,  dimension);
+    glVertex3f( -dimension, -dimension, -dimension);
 
     //top
-    glBegin(GL_POLYGON);
-    glVertex3f(  0.5,  0.5,  0.5 );
-    glVertex3f(  0.5,  0.5, -0.5 );
-    glVertex3f( -0.5,  0.5, -0.5 );
-    glVertex3f( -0.5,  0.5,  0.5 );
-    glEnd();
+    glVertex3f(  dimension,  dimension,  dimension);
+    glVertex3f(  dimension,  dimension, -dimension);
+    glVertex3f( -dimension,  dimension, -dimension);
+    glVertex3f( -dimension,  dimension,  dimension);
 
     //left
-    glBegin(GL_POLYGON);
-    glVertex3f( -0.5, -0.5,  0.5 );
-    glVertex3f( -0.5,  0.5,  0.5 );
-    glVertex3f( -0.5,  0.5, -0.5 );
-    glVertex3f( -0.5, -0.5, -0.5 );
-    glEnd();
+    glVertex3f( -dimension, -dimension,  dimension);
+    glVertex3f( -dimension,  dimension,  dimension);
+    glVertex3f( -dimension,  dimension, -dimension);
+    glVertex3f( -dimension, -dimension, -dimension);
 
     //right
-    glBegin(GL_POLYGON);
-    glVertex3f( 0.5, -0.5, -0.5 );
-    glVertex3f( 0.5,  0.5, -0.5 );
-    glVertex3f( 0.5,  0.5,  0.5 );
-    glVertex3f( 0.5, -0.5,  0.5 );
-    glEnd();
+    glVertex3f(  dimension, -dimension, -dimension);
+    glVertex3f(  dimension,  dimension, -dimension);
+    glVertex3f(  dimension,  dimension,  dimension);
+    glVertex3f(  dimension, -dimension,  dimension);
 
     //front
-    glBegin(GL_POLYGON);
-    glVertex3f( -0.5, -0.5, -0.5);
-    glVertex3f( -0.5,  0.5, -0.5);
-    glVertex3f(  0.5,  0.5, -0.5);
-    glVertex3f(  0.5, -0.5, -0.5);
-    glEnd();
+    glVertex3f( -dimension, -dimension, -dimension);
+    glVertex3f( -dimension,  dimension, -dimension);
+    glVertex3f(  dimension,  dimension, -dimension);
+    glVertex3f(  dimension, -dimension, -dimension);
 
     //back
-    glBegin(GL_POLYGON);
-    glVertex3f(  0.5, -0.5, 0.5 );
-    glVertex3f(  0.5,  0.5, 0.5 );
-    glVertex3f( -0.5,  0.5, 0.5 );
-    glVertex3f( -0.5, -0.5, 0.5 );
+    glVertex3f(  dimension, -dimension, dimension);
+    glVertex3f(  dimension,  dimension, dimension);
+    glVertex3f( -dimension,  dimension, dimension);
+    glVertex3f( -dimension, -dimension, dimension);
+
     glEnd();
 }//end paintCube 
 

@@ -23,6 +23,7 @@ protected:
     void mouseMoveEvent(QMouseEvent *event);
     void normalizeAngle(int &angle);
     void paintAxis();
+    void paintOutline();
     void paintCube();
 
 private:
