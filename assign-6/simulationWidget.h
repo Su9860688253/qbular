@@ -64,6 +64,8 @@ public slots:
     void setDraw(const QString &d);
     void setGuide(const QString &g);
 
+    void setSource(QAbstractButton *b);
+
 signals:
     void xRotChanged(int angle);
     void yRotChanged(int angle);

@@ -402,3 +402,23 @@ SimulationWidget::setGuide(const QString &g)
     this->guide = g.toLower();
     this->updateGL();
 }//end setGuide
+
+
+void
+SimulationWidget::setSource(QAbstractButton *b)
+{
+    QString text = b->text(), newSrc;
+
+    if (text.contains("no input", Qt::CaseInsensitive))
+        newSrc = "no input";
+    else if (text.contains("function", Qt::CaseInsensitive))
+        newSrc = "function";
+    else
+        newSrc = "file";
+
+    if (newSrc != this->source)
+    {
+        this->source = newSrc;
+        this->updateGL();
+    }
+}//end setSource

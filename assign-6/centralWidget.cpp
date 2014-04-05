@@ -454,6 +454,10 @@ CentralWidget::setConnections()
     connect(this->guide, SIGNAL(currentIndexChanged(const QString &)),
         this->simulationWidget, SLOT(setGuide(const QString &)));
 
+    //connect source button group to simulationWidget
+    connect(this->source, SIGNAL(buttonReleased(QAbstractButton *)),
+        this->simulationWidget, SLOT(setSource(QAbstractButton *)));
+
     //connect choose file button to file dialog
     connect(this->chooseFile, SIGNAL(released()),
         this, SLOT(showFileDialog()));
