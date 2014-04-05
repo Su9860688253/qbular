@@ -240,8 +240,8 @@ SimulationWidget::paintLed(int x, int y, int z)
     bool selective = this->source == "function";
     float pi = 3.14;
     int sine = round(
-        3*sin(pi/4 * x) +
-        3*sin(pi/4 * z) + 
+        4*sin(pi/4 * x) +
+        4*sin(pi/4 * z) + 
         (float)(this->width - 2)*0.5);
 
     if ((y == sine) || !selective)
