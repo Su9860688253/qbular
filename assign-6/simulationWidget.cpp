@@ -50,14 +50,6 @@ SimulationWidget::paintGL()
     //makes points larger
     glPointSize(2);
 
-    //paint axis if necessary
-    if (this->guide == "axis" || this->guide == "both")
-        this->paintAxis();
-
-    //prepare sphere if necessary
-    if ((this->source == "function") && (this->function == "sphere"))
-        this->prepareSphere();
-
     //set x/y/z rotation
     glRotatef(xRot, 1.0, 0.0, 0.0);
     glRotatef(yRot, 0.0, 1.0, 0.0);
@@ -66,6 +58,14 @@ SimulationWidget::paintGL()
     //set zoom
     float fraction = this->zoom / 100.0;
     glScalef(fraction, fraction, fraction);
+
+    //paint axis if necessary
+    if (this->guide == "axis" || this->guide == "both")
+        this->paintAxis();
+
+    //prepare sphere if necessary
+    if ((this->source == "function") && (this->function == "sphere"))
+        this->prepareSphere();
 
     //move to lattice center
     glTranslatef(
