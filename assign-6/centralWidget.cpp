@@ -61,14 +61,14 @@ CentralWidget::setDefaultProperties()
 {
     this->defaultProperties = new Properties;
 
-    this->defaultProperties->zoom = 6; 
+    this->defaultProperties->zoom = 4; 
     this->defaultProperties->xRot = 0;//15; 
     this->defaultProperties->yRot = 0;//60;
     this->defaultProperties->zRot = 0;
 
-    this->defaultProperties->length = 10;
-    this->defaultProperties->width = 10;
-    this->defaultProperties->height = 10;
+    this->defaultProperties->length = 20;
+    this->defaultProperties->width = 20;
+    this->defaultProperties->height = 20;
 
     this->defaultProperties->spacing = 3.0;
 

@@ -47,6 +47,17 @@ SimulationWidget::paintGL()
     glLoadIdentity();
     glTranslatef(0.0, 0.0, -10.0);
 
+    //makes points larger
+    glPointSize(2);
+
+    //paint axis if necessary
+    if (this->guide == "axis" || this->guide == "both")
+        this->paintAxis();
+
+    //prepare sphere if necessary
+    if ((this->source == "function") && (this->function == "sphere"))
+        this->prepareSphere();
+
     //set x/y/z rotation
     glRotatef(xRot, 1.0, 0.0, 0.0);
     glRotatef(yRot, 0.0, 1.0, 0.0);
@@ -55,10 +66,6 @@ SimulationWidget::paintGL()
     //set zoom
     float fraction = this->zoom / 100.0;
     glScalef(fraction, fraction, fraction);
-
-    //paint axis if necessary
-    if (this->guide == "axis" || this->guide == "both")
-        this->paintAxis();
 
     //move to lattice center
     glTranslatef(
@@ -81,12 +88,6 @@ SimulationWidget::paintGL()
     else
         glColor4f(1.0, 1.0, 1.0, opacity);
 
-    //makes points larger
-    glPointSize(2);
-
-    if ((this->source == "function") && (this->function == "sphere"))
-        this->prepareSphere();
-
     //loop over lattice dimensions
     int i, j, k;
     for (i = 0; i < this->height; i++)
@@ -95,16 +96,6 @@ SimulationWidget::paintGL()
         {
             for (k = 0; k < this->length; k++)
             {
-/*
-                if (this->draw == "cubes")
-                    paintCube();
-                else
-                {
-                    glBegin(GL_POINTS);
-                    glVertex3f(0, 0, 0);
-                    glEnd();
-                }
-*/
                 this->paintLed(k, j, i);
 
                 //advance in the x direction
