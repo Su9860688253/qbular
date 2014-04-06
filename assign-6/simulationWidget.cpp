@@ -167,19 +167,21 @@ SimulationWidget::normalizeAngle(int &angle)
 void
 SimulationWidget::paintAxis()
 {
+    int factor = 2;
+
     //set color to yellow
     glColor4f(1.0, 1.0, 0.0, 1.0);
 
     glBegin(GL_LINES);
 
-    glVertex3f(-3 * this->length, 0, 0); 
-    glVertex3f(3 * this->length, 0, 0); 
+    glVertex3f(-factor * this->length, 0, 0); 
+    glVertex3f(factor * this->length, 0, 0); 
 
-    glVertex3f(0, -3 * this->width, 0); 
-    glVertex3f(0, 3 * this->width, 0); 
+    glVertex3f(0, -factor * this->width, 0); 
+    glVertex3f(0, factor * this->width, 0); 
 
-    glVertex3f(0, 0, -3 * this->height); 
-    glVertex3f(0, 0, 3 * this->height);
+    glVertex3f(0, 0, -factor * this->height); 
+    glVertex3f(0, 0, factor * this->height);
 
     glEnd();
 }//end paintAxis
