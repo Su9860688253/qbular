@@ -251,9 +251,9 @@ SimulationWidget::paintLed(int x, int y, int z)
     {
         float pi = 3.14;
         int sine = round(
-            4*sin(pi/4 * x) +
-            4*sin(pi/4 * z) + 
-            (float)(this->width - 2)*0.5);
+            4 * sin(pi/4 * x) +
+            4 * sin(pi/4 * z) + 
+            (this->width - 2) * 0.5);
 
         doPainting = y == sine;
     }

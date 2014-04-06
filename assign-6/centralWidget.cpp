@@ -77,7 +77,7 @@ CentralWidget::setDefaultProperties()
     this->defaultProperties->guide = "both";
 
     this->defaultProperties->source = "function";
-    this->defaultProperties->function = "sphere";
+    this->defaultProperties->function = "sine";
 }//end setDefaultProperties
 
 
