@@ -18,7 +18,11 @@ SimulationWidget::SimulationWidget(Properties *prop, QWidget *parent)
         draw(prop->draw),
         guide(prop->guide),
         source(prop->source),
-        function(prop->function)
+        function(prop->function),
+        sphRadius(0),
+        sphOriginX(0),
+        sphOriginY(0),
+        sphOriginZ(0)
 {}//end constructor
 
 
@@ -79,6 +83,9 @@ SimulationWidget::paintGL()
 
     //makes points larger
     glPointSize(2);
+
+    if ((this->source == "function") && (this->function == "sphere"))
+        this->prepareSphere();
 
     //loop over lattice dimensions
     int i, j, k;
@@ -237,14 +244,33 @@ SimulationWidget::paintOutline()
 void
 SimulationWidget::paintLed(int x, int y, int z)
 {
-    bool selective = this->source == "function";
-    float pi = 3.14;
-    int sine = round(
-        4*sin(pi/4 * x) +
-        4*sin(pi/4 * z) + 
-        (float)(this->width - 2)*0.5);
+    bool doPainting = true;
 
-    if ((y == sine) || !selective)
+    //math for sine function
+    if ((this->source == "function") && (this->function == "sine"))
+    {
+        float pi = 3.14;
+        int sine = round(
+            4*sin(pi/4 * x) +
+            4*sin(pi/4 * z) + 
+            (float)(this->width - 2)*0.5);
+
+        doPainting = y == sine;
+    }
+    //math for sphere function
+    else if ((this->source == "function") && 
+        (this->function == "sphere"))
+    {
+        int sphere = round(
+            pow(x - this->sphOriginX, 2.0) + 
+            pow(y - this->sphOriginY, 2.0) + 
+            pow(z - this->sphOriginZ, 2.0)); 
+
+        doPainting = abs(pow(this->sphRadius - 1, 2) - sphere) < 3;
+    }
+
+    //paint cube or points if necessary
+    if (doPainting)
     {
         if (this->draw == "cubes")  this->paintCube();
         else
@@ -422,3 +448,26 @@ SimulationWidget::setSource(QAbstractButton *b)
         this->updateGL();
     }
 }//end setSource
+
+
+void
+SimulationWidget::prepareSphere()
+{
+    //set sphere radius to smallest lattice dimension divided by 2
+    int dim;
+    if (this->length <= this->width)
+        dim = this->length;
+    else
+        dim = this->width;
+    if (this->height <= dim)
+        dim = this->height;
+    this->sphRadius = dim >> 1;
+
+    //set sphere origin coordinates
+    this->sphOriginX = this->sphRadius +
+        ((this->length % 2) ? 0 : -0.5);
+    this->sphOriginY = this->sphRadius +
+        ((this->width  % 2) ? 0 : -0.5);
+    this->sphOriginZ = this->sphRadius +
+        ((this->height % 2) ? 0 : -0.5);
+}//end prepareSphere

@@ -61,23 +61,23 @@ CentralWidget::setDefaultProperties()
 {
     this->defaultProperties = new Properties;
 
-    this->defaultProperties->zoom = 10; 
-    this->defaultProperties->xRot = 15; 
-    this->defaultProperties->yRot = 60;
+    this->defaultProperties->zoom = 6; 
+    this->defaultProperties->xRot = 0;//15; 
+    this->defaultProperties->yRot = 0;//60;
     this->defaultProperties->zRot = 0;
 
-    this->defaultProperties->length = 5;
-    this->defaultProperties->width = 5;
-    this->defaultProperties->height = 5;
+    this->defaultProperties->length = 10;
+    this->defaultProperties->width = 10;
+    this->defaultProperties->height = 10;
 
     this->defaultProperties->spacing = 3.0;
 
     this->defaultProperties->color = "green";
-    this->defaultProperties->draw = "cubes";
+    this->defaultProperties->draw = "points";
     this->defaultProperties->guide = "both";
 
     this->defaultProperties->source = "function";
-    this->defaultProperties->function = "sine";
+    this->defaultProperties->function = "sphere";
 }//end setDefaultProperties
 
 

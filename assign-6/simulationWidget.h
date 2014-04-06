@@ -46,6 +46,11 @@ private:
     QString source;
     QString function;
 
+    int sphRadius;
+    float sphOriginX;
+    float sphOriginY;
+    float sphOriginZ;
+
     QPoint lastPos;
 
 public slots:
@@ -65,6 +70,7 @@ public slots:
     void setGuide(const QString &g);
 
     void setSource(QAbstractButton *b);
+    void prepareSphere();
 
 signals:
     void xRotChanged(int angle);
