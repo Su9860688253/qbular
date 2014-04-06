@@ -471,3 +471,11 @@ SimulationWidget::prepareSphere()
     this->sphOriginZ = this->sphRadius +
         ((this->height % 2) ? 0 : -0.5);
 }//end prepareSphere
+
+
+void
+SimulationWidget::setFunction(const QString &f)
+{
+    this->function = f.toLower();
+    this->updateGL();
+}//end setFunction

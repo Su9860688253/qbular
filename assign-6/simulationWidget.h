@@ -71,6 +71,7 @@ public slots:
 
     void setSource(QAbstractButton *b);
     void prepareSphere();
+    void setFunction(const QString &f);
 
 signals:
     void xRotChanged(int angle);

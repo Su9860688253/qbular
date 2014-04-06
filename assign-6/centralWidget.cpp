@@ -458,7 +458,10 @@ CentralWidget::setConnections()
     connect(this->source, SIGNAL(buttonReleased(QAbstractButton *)),
         this->simulationWidget, SLOT(setSource(QAbstractButton *)));
 
-    //connect choose file button to file dialog
+    //connect input controls
+    connect(this->function,
+        SIGNAL(currentIndexChanged(const QString &)),
+        this->simulationWidget, SLOT(setFunction(const QString &)));
     connect(this->chooseFile, SIGNAL(released()),
         this, SLOT(showFileDialog()));
 }//end setConnections
