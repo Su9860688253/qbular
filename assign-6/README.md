@@ -4,7 +4,8 @@ LEDCube
 About
 ----
 This program is an updated version of the program from Assignment 5.
-<<DESCRIPTION HERE>>
+It features the ability to display sinusoidal and spherical math
+functions on the simulated LED lattice.
 
 Just to recap: this program is a simulation tool for a popular 
 electronics project called an [LED cube][1]. An LED cube is a 

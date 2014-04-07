@@ -21,6 +21,7 @@ Outline
 * Assignment 3 - [Working tool with a custom lattice simulation][10]
 * Assignment 4 - [Tool with expanded and reorganized UI][11]
 * Assignment 5 - [Tool with corrected centering and guidelines][12]
+* Assignment 6 - [Tool with sine and sphere functions][13]
 
 [1]: http://www-cs.ccny.cuny.edu/~wolberg/cs221/index.html
 [2]: http://www.ccny.cuny.edu/
@@ -34,3 +35,4 @@ Outline
 [10]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-3/
 [11]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-4/
 [12]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-5/
+[13]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-6/
