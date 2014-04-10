@@ -478,12 +478,20 @@ CentralWidget::showFileDialog()
         QString(),
         "Point Cloud Files (*.xyz)");
 
-    //displays filename
-    QFileInfo *fileInfo = new QFileInfo(filename);
-    this->currentFile->setText(fileInfo->fileName());
+    //if a file was chosen
+    if (filename != "")
+    {
+        //displays filename
+        QFileInfo *fileInfo = new QFileInfo(filename);
 
-    //emit signal if necessary
-    //TODO add check to see if signal is necessary
-    QFile *file = new QFile(filename);
-    emit ptCloudFileChanged(file);
+        //if a new file is chosen
+        if (this->currentFile->text() != fileInfo->fileName())
+        {
+            this->currentFile->setText(fileInfo->fileName());
+
+            //emit signal
+            QFile *file = new QFile(filename);
+            emit ptCloudFileChanged(file);
+        }
+    }
 }//end showFileDialog
