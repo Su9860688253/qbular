@@ -503,14 +503,14 @@ SimulationWidget::scanPtCloud(QFile *file)
             minX, minY, minZ,
             maxX, maxY, maxZ;
 
-    //initialize min/max variables
+    //initializes min/max variables
     line = stream.readLine();
     list = line.split(" ");
     minX = maxX = list.at(0).toDouble();
     minY = maxY = list.at(1).toDouble();
     minZ = maxZ = list.at(2).toDouble();
 
-    //determine min/max
+    //determines min/max
     int i;
     for (i = 0; i < numOfPts - 1; i++)
     {
@@ -520,7 +520,7 @@ SimulationWidget::scanPtCloud(QFile *file)
         y = list.at(1).toDouble();
         z = list.at(2).toDouble();
 
-        //update min if necessary
+        //updates min if necessary
         if (x < minX)
             minX = x;
         if (y < minY)
@@ -528,7 +528,7 @@ SimulationWidget::scanPtCloud(QFile *file)
         if (z < minZ)
             minZ = z;
 
-        //update max if necessary
+        //updates max if necessary
         if (x > maxX)
             maxX = x;
         if (y > maxY)
@@ -537,13 +537,13 @@ SimulationWidget::scanPtCloud(QFile *file)
             maxZ = z;
     }
 
-    //pick interval size for histogram
+    //picks interval size for histogram
     double intervalX, intervalY, intervalZ;
     intervalX = (maxX - minX) / (this->length - 1);
     intervalY = (maxY - minY) / (this->width - 1);
     intervalZ = (maxZ - minZ) / (this->height - 1);
 
-    //prepare histogram array
+    //prepares histogram array
     if (this->histReady)
         delete[] this->hist;
     int histSize = sizeof(int) * this->length * this->width * 
@@ -551,18 +551,18 @@ SimulationWidget::scanPtCloud(QFile *file)
     int *hist = (int *)malloc(histSize);
     memset(hist, 0, histSize);
 
-    //prepare for 2nd pass of file reading
+    //prepares for 2nd pass of file reading
     stream.seek(0);
-    stream.readLine();//throw away first line
+    stream.readLine();//throws away first line
 
-    //add points to histogram
+    //adds points to histogram
     int offsetX, offsetY, offsetZ, index;
     for (i = 0; i < numOfPts; i++)
     {
         line = stream.readLine();
         list = line.split(" ");
 
-        //determine which histogram interval the point belongs to
+        //determines which histogram interval the point belongs to
         offsetX = ((list.at(0).toDouble() - minX) / intervalX);
         offsetY = ((list.at(1).toDouble() - minY) / intervalY);
         offsetZ = ((list.at(2).toDouble() - minZ) / intervalZ);
@@ -574,9 +574,9 @@ SimulationWidget::scanPtCloud(QFile *file)
         hist[index]++;
     }
 
-    //store histogram as a member variable
+    //stores histogram as a member variable
     this->hist = hist;
 
-    //mark histogram as ready to be draw
+    //marks histogram as ready to be draw
     this->histReady = true;
 }//end scanPtCloud
