@@ -61,14 +61,14 @@ CentralWidget::setDefaultProperties()
 {
     this->defaultProperties = new Properties;
 
-    this->defaultProperties->zoom = 4; 
-    this->defaultProperties->xRot = 0;//15; 
-    this->defaultProperties->yRot = 0;//60;
-    this->defaultProperties->zRot = 0;
+    this->defaultProperties->zoom = 2; 
+    this->defaultProperties->xRot = 105;//15; 
+    this->defaultProperties->yRot = 180;//60;
+    this->defaultProperties->zRot = 80;//0;
 
-    this->defaultProperties->length = 20;
-    this->defaultProperties->width = 20;
-    this->defaultProperties->height = 20;
+    this->defaultProperties->length = 40;
+    this->defaultProperties->width = 40;
+    this->defaultProperties->height = 40;
 
     this->defaultProperties->spacing = 3.0;
 
@@ -76,7 +76,7 @@ CentralWidget::setDefaultProperties()
     this->defaultProperties->draw = "points";
     this->defaultProperties->guide = "both";
 
-    this->defaultProperties->source = "function";
+    this->defaultProperties->source = "file";
     this->defaultProperties->function = "sine";
 }//end setDefaultProperties
 
@@ -464,6 +464,8 @@ CentralWidget::setConnections()
         this->simulationWidget, SLOT(setFunction(const QString &)));
     connect(this->chooseFile, SIGNAL(released()),
         this, SLOT(showFileDialog()));
+    connect(this, SIGNAL(ptCloudFileChanged(QFile *)),
+        this->simulationWidget, SLOT(scanPtCloud(QFile *)));
 }//end setConnections
 
 
@@ -476,6 +478,12 @@ CentralWidget::showFileDialog()
         QString(),
         "Point Cloud Files (*.xyz)");
 
-    QFileInfo *file = new QFileInfo(filename);
-    this->currentFile->setText(file->fileName());
+    //displays filename
+    QFileInfo *fileInfo = new QFileInfo(filename);
+    this->currentFile->setText(fileInfo->fileName());
+
+    //emit signal if necessary
+    //TODO add check to see if signal is necessary
+    QFile *file = new QFile(filename);
+    emit ptCloudFileChanged(file);
 }//end showFileDialog

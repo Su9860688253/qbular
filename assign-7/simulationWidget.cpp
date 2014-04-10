@@ -22,7 +22,9 @@ SimulationWidget::SimulationWidget(Properties *prop, QWidget *parent)
         sphRadius(0),
         sphOriginX(0),
         sphOriginY(0),
-        sphOriginZ(0)
+        sphOriginZ(0),
+        hist(0),
+        histReady(false)
 {}//end constructor
 
 
@@ -262,6 +264,14 @@ SimulationWidget::paintLed(int x, int y, int z)
         doPainting = abs(pow(this->sphRadius - 1, 2) - sphere) < 3;
     }
 
+    //check point cloud file histogram
+    else if ((this->source == "file") && this->histReady)
+    {
+        int index = x +
+            this->length * y +
+            this->length * this->width * z;
+        doPainting = this->hist[index] > 0;
+    }
     //paint cube or points if necessary
     if (doPainting)
     {
@@ -472,3 +482,101 @@ SimulationWidget::setFunction(const QString &f)
     this->function = f.toLower();
     this->updateGL();
 }//end setFunction
+
+
+void
+SimulationWidget::scanPtCloud(QFile *file)
+{
+    //confirms that file is readable
+    if (!file->open(QIODevice::ReadOnly | QIODevice::Text))
+    {   
+        qDebug() << "Cannot open point cloud file.";
+        return;
+    }   
+
+    //prepares for 1st pass of file reading
+    QTextStream stream(file);
+    int numOfPts = stream.readLine().toInt();
+    QString line;
+    QStringList list;
+    double  x, y, z,
+            minX, minY, minZ,
+            maxX, maxY, maxZ;
+
+    //initialize min/max variables
+    line = stream.readLine();
+    list = line.split(" ");
+    minX = maxX = list.at(0).toDouble();
+    minY = maxY = list.at(1).toDouble();
+    minZ = maxZ = list.at(2).toDouble();
+
+    //determine min/max
+    int i;
+    for (i = 0; i < numOfPts - 1; i++)
+    {
+        line = stream.readLine();
+        list = line.split(" ");
+        x = list.at(0).toDouble();
+        y = list.at(1).toDouble();
+        z = list.at(2).toDouble();
+
+        //update min if necessary
+        if (x < minX)
+            minX = x;
+        if (y < minY)
+            minY = y;
+        if (z < minZ)
+            minZ = z;
+
+        //update max if necessary
+        if (x > maxX)
+            maxX = x;
+        if (y > maxY)
+            maxY = y;
+        if (z > maxZ)
+            maxZ = z;
+    }
+
+    //pick interval size for histogram
+    double intervalX, intervalY, intervalZ;
+    intervalX = (maxX - minX) / (this->length - 1);
+    intervalY = (maxY - minY) / (this->width - 1);
+    intervalZ = (maxZ - minZ) / (this->height - 1);
+
+    //prepare histogram array
+    if (this->histReady)
+        delete[] this->hist;
+    int histSize = sizeof(int) * this->length * this->width * 
+        this->height;
+    int *hist = (int *)malloc(histSize);
+    memset(hist, 0, histSize);
+
+    //prepare for 2nd pass of file reading
+    stream.seek(0);
+    stream.readLine();//throw away first line
+
+    //add points to histogram
+    int offsetX, offsetY, offsetZ, index;
+    for (i = 0; i < numOfPts; i++)
+    {
+        line = stream.readLine();
+        list = line.split(" ");
+
+        //determine which histogram interval the point belongs to
+        offsetX = ((list.at(0).toDouble() - minX) / intervalX);
+        offsetY = ((list.at(1).toDouble() - minY) / intervalY);
+        offsetZ = ((list.at(2).toDouble() - minZ) / intervalZ);
+
+        //increments histogram at the appropriate index
+        index = offsetX + 
+            this->length * offsetY +
+            this->length * this->width * offsetZ;
+        hist[index]++;
+    }
+
+    //store histogram as a member variable
+    this->hist = hist;
+
+    //mark histogram as ready to be draw
+    this->histReady = true;
+}//end scanPtCloud

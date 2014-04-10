@@ -13,6 +13,7 @@ class QPushButton;
 class QLabel;
 class SimulationWidget;
 class QGroupBox;
+class QFile;
 
 
 class CentralWidget : public QWidget
@@ -63,6 +64,8 @@ private:
     QGroupBox *createInputOptControls();
     void setConnections();
 
+signals:
+    void ptCloudFileChanged(QFile *p);
 
 public slots:
     void showFileDialog();

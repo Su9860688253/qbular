@@ -7,6 +7,7 @@
 
 class QPoint;
 class QAbstractButton;
+class QFile;
 
 
 class SimulationWidget : public QGLWidget 
@@ -51,6 +52,9 @@ private:
     float sphOriginY;
     float sphOriginZ;
 
+    int *hist;
+    bool histReady;
+
     QPoint lastPos;
 
 public slots:
@@ -72,6 +76,7 @@ public slots:
     void setSource(QAbstractButton *b);
     void prepareSphere();
     void setFunction(const QString &f);
+    void scanPtCloud(QFile *file);
 
 signals:
     void xRotChanged(int angle);

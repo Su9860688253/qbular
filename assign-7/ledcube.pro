@@ -9,6 +9,8 @@ TARGET =
 DEPENDPATH += . 
 INCLUDEPATH += .
 
+CONFIG += 
+
 # Input
 HEADERS     += \
     centralWidget.h \
