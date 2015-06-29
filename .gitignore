@@ -1,0 +1,13 @@
+# editor files
+*~
+*.swp
+
+# compilation files
+*.o
+Makefile
+qrc_*
+ui_*
+moc_*
+
+# binary
+qbular

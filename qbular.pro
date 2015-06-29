@@ -21,4 +21,4 @@ SOURCES     += \
     centralWidget.cpp \
     simulationWidget.cpp
 RESOURCES += \
-    ledcube.qrc 
+    qbular.qrc 
