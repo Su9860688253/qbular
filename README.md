@@ -7,7 +7,7 @@ This tool makes it possible to design cube graphics without having to grab a sol
 
 This is what `qbular` looks like:
 
-<< TODO: insert animated GIF>>
+![Photo of LED cube](https://farm4.staticflickr.com/3874/19252435295_d17194a168_o.gif)
 
 This program is written in [C++][cpp wiki], and it uses the [Qt framework][qt wiki] for the graphical interface and [OpenGL][opengl project] for the graphical simulation.
 
