@@ -49,7 +49,7 @@ CentralWidget::CentralWidget(QWidget *parent)
     this->setConnections();
 
     //sets window title and icon
-    this->setWindowTitle("LED Cube Simulation");
+    this->setWindowTitle("Qbular");
     QIcon *icon_ptr = new QIcon(":/images/icon.png");
     const QIcon &icon_ref = *icon_ptr;
     this->setWindowIcon(icon_ref);
