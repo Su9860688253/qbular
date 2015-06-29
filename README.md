@@ -1,40 +1,44 @@
-Software Design Individual Spring 2014
+LEDCube
 ====
 
 About
 ----
-This repo contains my individual assignments from the class
-[Software Design Lab][1] (CSC-221), which I took at [City College][2]
-during the Spring 2014 semester with [Prof. George Wolberg][3]. The
-class was a mix of GUI programming and Computer Graphics, and it
-featured material about the following technologies:
+This program is an updated version of the program from Assignment 6.
+It features the ability to display point cloud files, including 'the
+face file' that was distributed to the class by [Prof. Wolberg][1].
 
-* [C++][4]
-* [Qt][5]
-* [OpenGL][6]
-* [Microsoft Kinect][7]
+Just to recap: this program is a simulation tool for a popular 
+electronics project called an [LED cube][2]. An LED cube is a 
+lattice-shaped structure of Light Emitting Diodes (LED) that are 
+controlled by a microcontroller, like an [Arduino][3], for the 
+purpose of putting on a 3D light show. This simulation tool for 
+LED cubes is helpful for two reasons. 1) It makes it possible to 
+design custom light shows without dealing with hardware details. 
+2) It helps gauge how large of a cube is needed to properly 
+display a given light show.
 
-Outline
+This program is written in [C++][4], and it uses the 
+[Qt framework][5] for the Graphical User Interface (GUI) widgets 
+and [OpenGL][6] for the graphics simulation.
+
+Installation
 ----
-* Assignment 1 - [Demo UI][8]
-* Assignment 2 - [Demo UI with a stock cube simulation][9]
-* Assignment 3 - [Working tool with a custom lattice simulation][10]
-* Assignment 4 - [Tool with expanded and reorganized UI][11]
-* Assignment 5 - [Tool with corrected centering and guidelines][12]
-* Assignment 6 - [Tool with sine and sphere functions][13]
-* Assignment 7 - [Tool with point cloud][14]
+    hg clone https://bitbucket.org/ian_s_mcb/software-design-spring2014
+    cd software-design-spring2014/assign-7
+    qmake
+    make
+    ./ledcube
 
-[1]: http://www-cs.ccny.cuny.edu/~wolberg/cs221/index.html
-[2]: http://www.ccny.cuny.edu/
-[3]: http://www-cs.engr.ccny.cuny.edu/~wolberg/
+Prerequisites
+----
+* [Qt library][7] version 4.x or higher
+* [OpenGL][8] version 2.1 or higher
+
+[1]: http://www-cs.engr.ccny.cuny.edu/~wolberg/
+[2]: http://www.instructables.com/id/Led-Cube-8x8x8/
+[3]: http://en.wikipedia.org/wiki/Arduino
 [4]: http://en.wikipedia.org/wiki/C%2B%2B
 [5]: http://en.wikipedia.org/wiki/Qt_%28software%29
 [6]: http://www.opengl.org/
-[7]: http://en.wikipedia.org/wiki/Microsoft_Kinect
-[8]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-1/ 
-[9]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-2/
-[10]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-3/
-[11]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-4/
-[12]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-5/
-[13]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-6/
-[14]: https://bitbucket.org/ian_s_mcb/software-design-spring2014/src/tip/assign-7/
+[7]: https://qt-project.org/downloads
+[8]: http://www.opengl.org/documentation/implementations/

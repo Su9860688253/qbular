@@ -1,9 +1,0 @@
-syntax: glob
-*~
-*.swp
-*.o
-Makefile
-ledcube
-qrc_*
-ui_*
-moc_*
